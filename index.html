@@ -88,7 +88,9 @@ button{font:inherit;color:inherit}
 .hero-art{position:relative;height:clamp(300px,64vh,680px)}
 .hero-art .me{position:absolute;right:0;bottom:2%;width:78%;height:96%}
 .hero-art .pup{position:absolute;left:0;bottom:0;width:34%;height:42%}
-.hero-art .me.video{left:0;right:0;margin:0 auto;width:100%;height:100%}
+.hero-art .me.video,.hero-art .me.still{left:0;right:0;margin:0 auto;width:100%;height:100%}
+.hero-art.standing{height:clamp(320px,76vh,800px)}
+.hero-art .me.still::after{content:"";position:absolute;left:30%;right:30%;bottom:0;height:18px;border-radius:50%;background:radial-gradient(ellipse,rgba(30,50,10,.35),rgba(30,50,10,0) 70%);z-index:-1}
 .hero-art .me > video,.hero-art .me > img{transform-origin:50% 100%;animation:heroFloat 7s ease-in-out infinite}
 @keyframes heroFloat{0%,100%{transform:translate(0,0) rotate(0deg)}25%{transform:translate(2px,-5px) rotate(.4deg)}50%{transform:translate(0,-9px) rotate(0deg)}75%{transform:translate(-2px,-5px) rotate(-.4deg)}}
 @media (prefers-reduced-motion: reduce){.hero-art .me > video,.hero-art .me > img{animation:none}}
@@ -138,7 +140,7 @@ button{font:inherit;color:inherit}
 .revealed .node:nth-of-type(4) i::after{animation-delay:1.6s}
 .revealed .node:nth-of-type(5) i::after{animation-delay:2.1s}
 @keyframes dotfill{to{transform:scale(1)}}
-@media (max-width:720px){.hero{height:auto;min-height:100svh}.hero-grid{min-height:0}.hero-copy{padding-bottom:0;padding-top:24px}.hero-art{order:2;height:340px}.node{letter-spacing:.1em}}
+@media (max-width:720px){.hero{height:auto;min-height:100svh}.hero-grid{min-height:0}.hero-copy{padding-bottom:0;padding-top:24px}.hero-art{order:2;height:340px}.hero-art.standing{height:440px}.node{letter-spacing:.1em}}
 .scroll span{display:inline-block;animation:nudge 1.6s ease-in-out infinite}
 @keyframes nudge{50%{transform:translateY(4px)}}
 .revealed .hero-copy > *{animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
@@ -433,11 +435,11 @@ const LINKS = {
 const OPENING_VIDEO = { src: "opening.mp4", idleA: 0.08, idleB: 1.28 };
 
 // Animated hero avatar (transparent). Clear webm to fall back to the drawn character.
-const AVATAR_VIDEO = { webm: "avatar.webm", fallback: "avatar.webp", poster: "avatar-poster.webp" };
+const AVATAR_VIDEO = { webm: "", fallback: "avatar.webp", poster: "avatar-poster.webp" };
 
 // Drop image paths/URLs here. Empty = the drawn character is used.
 const IMAGES = {
-  avatar: "",      // your 3D avatar (if it already includes the dog, the drawn puppy hides)
+  avatar: "hero-character.png",      // your 3D avatar (if it already includes the dog, the drawn puppy hides)
   cheetah: "", owl: "", elephant: "", parrot: "", eagle: "", squirrel: "",
   fox: "", peacock: "", lion: "", bee: ""
 };
@@ -845,8 +847,9 @@ function art(key, label){
     }
     return;
   }
-  me.innerHTML = art('avatar', 'Pranjal waving and recording a reel');
-  if (IMAGES.avatar) pup.remove(); else pup.innerHTML = critter('puppy', 'Puppy sidekick');
+  me.innerHTML = art('avatar', 'Pranjal Singh, 3D character');
+  if (IMAGES.avatar){ pup.remove(); me.classList.add('still'); me.parentElement.classList.add('standing'); }
+  else pup.innerHTML = critter('puppy', 'Puppy sidekick');
 })();
 
 const statsEl = document.getElementById('stats');
