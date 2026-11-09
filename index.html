@@ -68,7 +68,7 @@ button{font:inherit;color:inherit}
 .sticky{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:50%;transform:translate(-50%,-150%);z-index:50;display:flex;align-items:center;gap:clamp(10px,2.4vw,28px);
   background:rgba(255,253,248,.92);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:999px;padding:6px 6px 6px 16px;box-shadow:var(--shadow);transition:transform .45s cubic-bezier(.2,.8,.2,1);max-width:calc(100% - 24px)}
 .sticky.show{transform:translate(-50%,0)}
-.sticky .logo{font-size:15px}
+.sticky .logo{font-size:15px;white-space:nowrap}
 .sticky .logo svg{width:20px;height:20px}
 .sticky a.l{font-size:13px;font-weight:500;text-decoration:none;white-space:nowrap}
 .sticky .pill{padding:8px 16px;font-size:13px}
@@ -123,8 +123,18 @@ button{font:inherit;color:inherit}
 .hero-grid{min-height:0}
 .hero-copy{align-self:center;gap:14px;padding-bottom:clamp(24px,4vw,80px)}
 .hero .hero-copy h1{font-size:clamp(44px,6.2vw,82px);white-space:nowrap}
-.school{font-weight:600;font-size:clamp(14px,1.4vw,17px);letter-spacing:.34em;color:var(--ink);opacity:.8;margin-top:-4px}
-.path{position:relative;justify-self:start;width:min(100%,540px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:22px}
+.school{justify-self:start;display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 10px;margin:2px 0 0;padding:9px 18px 9px 12px;border-radius:14px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.95);box-shadow:0 12px 26px -18px rgba(20,36,74,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-weight:500;font-size:clamp(12.5px,1.05vw,14.5px);line-height:1.4;letter-spacing:.01em;color:var(--ink)}
+.school svg{width:20px;height:20px;flex:none}
+.eyebrow-h{display:inline-flex;align-items:center;gap:10px;font-size:clamp(11.5px,.95vw,13.5px);font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--ink);opacity:.8;margin-bottom:-6px}
+.eyebrow-h::before{content:"";width:28px;height:2px;border-radius:2px;background:var(--dot)}
+.hero-lede{font-size:clamp(15px,1.2vw,18.5px);line-height:1.55;color:#1f2f52;max-width:46ch;margin-top:8px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:2px}
+.hero-cta .btn{padding:12px 22px}
+.avail{display:inline-flex;align-items:center;font-size:13px;font-weight:500;color:#1f2f52;margin-top:2px}
+.worked{font-size:12.5px;color:#3a4a6b;letter-spacing:.02em}
+.worked b{font-weight:600;color:var(--ink)}
+.school i{font-style:normal;color:var(--dot);font-weight:700}
+.path{position:relative;justify-self:start;width:min(100%,540px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:12px}
 .path .track{position:absolute;left:12.5%;right:12.5%;top:7px;height:2px;border-radius:2px;background:rgba(20,36,74,.16)}
 .path .fill{position:absolute;inset:0;border-radius:2px;background:linear-gradient(90deg,var(--ink),var(--dot));transform-origin:left;transform:scaleX(0)}
 .revealed .path .fill{animation:draw 1.5s .6s cubic-bezier(.6,0,.2,1) forwards}
@@ -159,7 +169,7 @@ button{font:inherit;color:inherit}
 @keyframes pop{from{opacity:0;transform:translateY(30px) scale(.85)}to{opacity:1;transform:none}}
 
 /* ---------- section cards ---------- */
-.sections{display:grid;gap:18px;padding-block:18px 26px}
+.sections{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;padding-block:0 26px}
 .box{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:clamp(20px,3vw,30px) clamp(18px,3vw,34px);scroll-margin-top:80px}
 .box h2{font-size:clamp(28px,3.4vw,38px)}
 .box .sub{font-size:14px;color:#2c3a58;margin-top:4px}
@@ -185,9 +195,27 @@ button{font:inherit;color:inherit}
 .dots li::before{content:"";position:absolute;left:2px;top:.55em;width:9px;height:9px;border-radius:50%;background:var(--dot)}
 .dots li strong{font-weight:600}
 
-/* internships */
-.int-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 28px;margin-bottom:10px}
-.int-body{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(18px,3vw,40px);align-items:center}
+/* internships: full-screen, full-width band */
+.sections > .box{box-sizing:border-box;width:calc(100% - 32px);max-width:1120px;margin-inline:auto}
+#internships.box{box-sizing:border-box;width:100%;max-width:none;margin-inline:0;border-radius:0;border-left:0;border-right:0;min-height:100vh;min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,3vh,36px);
+  padding:clamp(72px,9vh,110px) max(24px, 6vw, env(safe-area-inset-right,0px)) clamp(36px,6vh,72px) max(24px, 6vw, env(safe-area-inset-left,0px));scroll-margin-top:0}
+.int-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 32px;margin-bottom:0}
+#internships h2{font-size:clamp(34px,3.8vw,72px)}
+#internships .sub{font-size:clamp(14px,1.2vw,17px)}
+#internships .tab{font-size:12.5px;padding:10px 18px}
+.int-body{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,5vw,90px);align-items:center}
+#internships .art{height:clamp(240px,46vh,540px)}
+#internships .panel{gap:14px}
+#internships .panel h3{font-size:clamp(26px,2.6vw,50px)}
+#internships .panel .r{font-size:clamp(15px,1.15vw,21px)}
+#internships .dots{gap:14px}
+#internships .dots li{font-size:clamp(14.5px,1.02vw,19.5px);max-width:70ch}
+.live{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22b35e;box-shadow:0 0 0 0 rgba(34,179,94,.5);animation:live 2s infinite;margin-right:7px;vertical-align:middle}
+@keyframes live{0%{box-shadow:0 0 0 0 rgba(34,179,94,.45)}70%{box-shadow:0 0 0 7px rgba(34,179,94,0)}100%{box-shadow:0 0 0 0 rgba(34,179,94,0)}}
+.now{display:inline-flex;align-items:center;vertical-align:middle;margin-left:10px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#17703c;background:#e3f6ea;border-radius:999px;padding:5px 12px 5px 10px}
+.now .live{margin-right:6px}
+@media (max-width:720px){#internships.box{min-height:0;padding-block:56px 40px}#internships .art{height:240px}}
 
 /* built */
 .built-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.35fr) minmax(0,.85fr);gap:clamp(16px,2.4vw,30px);align-items:start}
@@ -347,8 +375,9 @@ footer a{text-decoration:none}
       <div class="pup" id="heroPup"></div>
     </div>
     <div class="hero-copy">
+      <span class="eyebrow-h">Brand &amp; Growth Marketer</span>
       <h1>Pranjal Singh</h1>
-      <p class="school">SRCC '27</p>
+      <p class="school"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5 2.5 9 12 13.5 21.5 9Z" fill="#14244a"/><path d="M6.5 11v4.2c0 1.5 2.5 2.8 5.5 2.8s5.5-1.3 5.5-2.8V11L12 13.5Z" fill="#14244a" opacity=".85"/><path d="M21.5 9v5.2" stroke="#f2b51c" stroke-width="1.6" stroke-linecap="round"/><circle cx="21.5" cy="15.2" r="1.4" fill="#f2b51c"/></svg><span>Economics (Hons), SRCC</span><i>·</i><span>Delhi University</span><i>·</i><span>Graduating 2027</span></p>
       <div class="path" role="img" aria-label="Creator, Marketer, Founder, Builder">
         <span class="track"><span class="fill"></span><span class="spark"></span></span>
         <span class="node"><i></i>Creator</span>
@@ -356,12 +385,18 @@ footer a{text-decoration:none}
         <span class="node"><i></i>Founder</span>
         <span class="node"><i></i>Builder</span>
       </div>
-      <a class="scroll" href="#internships">Scroll <span>↓</span></a>
+      <p class="hero-lede">I turn attention into growth: 23M+ organic views, creator-led campaigns and a startup built from zero.</p>
+      <div class="hero-cta" id="heroCta">
+        <a class="btn dark" href="#internships">See my work</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+      <p class="avail"><span class="live" aria-hidden="true"></span>Open to brand &amp; growth roles · Remote till May 2027</p>
+      <p class="worked">Worked with <b>Garena</b> · <b>ITC</b> · <b>HT Media</b> · <b>Scaler</b> · <b>WENA</b></p>
     </div>
   </div>
 </header>
 
-<main class="wrap sections">
+<main class="sections">
   <!-- INTERNSHIPS -->
   <section class="box" id="internships" data-car="internships">
     <div class="int-head">
@@ -455,32 +490,37 @@ const SETS = {
   internships: [
     { tab: "Garena", animal: "cheetah", name: "Garena", role: "Marketing Consultant · Super 6 (cricket mobile game)", meta: "Aug – Oct 2026 · Remote",
       points: [
-        "Turned college student survey insights into Play Store screenshot and in-game graphic changes; weekly organic installs rose from <strong>7% to 15%</strong> within a week.",
-        "Onboarded cricket and gaming creators, moving deals from paid to barter; creator videos crossed <strong>50K+ views</strong>.",
-        "Drafted creator partnership and campus tournament proposals, including the “Super 6 Creator Cup”.",
+        "Surveyed college players and turned the insights into new Play Store screenshots and in-game graphics; weekly organic installs rose from <strong>7% to 15%</strong> within a week.",
+        "Sourced cricket and gaming creators and moved deals from paid to barter; creator videos crossed <strong>50K+ views</strong>.",
+        "Pitched the <strong>“Super 6 Creator Cup”</strong>, a live YouTuber tournament, along with campus-tournament and creator-partnership proposals.",
         "Worked directly with the Product Head and Marketing Head."
       ] },
-    { tab: "Scaler", animal: "owl", name: "Scaler", role: "Content Writer Intern (SEO)", meta: "Nov 2026 – Present · Remote",
+    { tab: "ITC PSPD", animal: "elephant", name: "ITC PSPD", role: "Sales & Marketing Intern · FiloServe (sustainable packaging)", meta: "Jun – Jul 2026",
       points: [
-        "Writing and optimising long-form blogs for organic search.",
-        "Selected after rewriting Scaler's “AI Engineer Roadmap” blog with a full SEO and readability audit."
-      ] },
-    { tab: "ITC PSPD", animal: "elephant", name: "ITC PSPD", role: "Sales & Marketing Intern · FiloServe", meta: "Jun – Jul 2026",
-      points: [
-        "Mapped <strong>170 food outlets</strong> across 4 North Delhi micro-markets (89% unorganised) for ITC's sustainable packaging brand.",
-        "Engaged <strong>88 organised F&amp;B brands</strong> and met product teams of 10+; secured a product-sampling engagement with Bake 5 Pizza.",
-        "Surveyed 50+ outlets on ground and built a substrate cost comparison from 35+ supplier listings.",
-        "Recommended a distributor-led entry and a compliance-led pitch tied to the Plastic Waste Management (Amendment) Rules 2026."
+        "Mapped <strong>170 food outlets</strong> across 4 North Delhi micro-markets and found 89% were unorganised, which shaped the go-to-market plan.",
+        "Engaged <strong>88 organised F&amp;B brands</strong>, met product teams of 10+, and secured a product-sampling engagement with Bake 5 Pizza.",
+        "Surveyed 50+ outlets on ground and built a packaging cost comparison from 35+ supplier listings.",
+        "Proposed a distributor-led entry and a compliance-led pitch built on the Plastic Waste Management (Amendment) Rules 2026."
       ] },
     { tab: "HT Media", animal: "parrot", name: "HT Media", role: "Business Development Intern · Mosaic Digital (VCCEdge)", meta: "Remote",
       points: [
-        "Built a prospect database of <strong>500+ researchers</strong> across 50+ universities.",
-        "Screened 100+ high-intent leads every week using a repeatable prioritisation framework.",
-        "Ran structured cold email campaigns to department heads and faculty."
+        "Built a prospect database of <strong>500+ researchers</strong> across 50+ universities for VCCEdge's academic subscriptions.",
+        "Screened <strong>100+ high-intent leads</strong> every week using a repeatable prioritisation framework.",
+        "Ran structured cold-email campaigns to department heads and faculty, using Lusha for contact discovery."
       ] },
-    { tab: "FICCI", animal: "eagle", name: "FICCI", role: "International Affairs Research Intern", meta: "", points: [] },
-    { tab: "Studifysuccess", animal: "squirrel", name: "Studifysuccess", role: "R&D Intern", meta: "Nov – Dec 2024",
-      points: [ "My first internship. The team took me on with zero prior experience." ] }
+    { tab: "WENA", animal: "eagle", name: "WENA", role: "GTM & Growth Marketing · Women Enabling New Ambitions (NGO)", meta: "Jul – Aug 2026 · Remote",
+      points: [
+        "Led a <strong>5-member team</strong> through a 6-week go-to-market engagement for a women's financial-literacy NGO.",
+        "Delivered <strong>10 CSR and NGO sessions</strong> averaging 40+ attendees, rated 4.3/5.",
+        "Revived dormant social handles to <strong>1L+ impressions</strong> and grew followers from 280 to 450.",
+        "Rebuilt the website from scratch with SEO and cut page load time by 3 seconds; handed over a 10+ page playbook."
+      ] },
+    { tab: "Scaler", animal: "owl", ongoing: true, name: "Scaler", role: "Content Writer Intern · SEO", meta: "Nov 2026 – Present · Remote",
+      points: [
+        "Writing and optimising long-form blogs for organic search with Scaler's SEO team.",
+        "Selected after rewriting Scaler's <strong>“AI Engineer Roadmap”</strong> blog with a full SEO and readability audit.",
+        "6-month remote internship, running alongside my final year at SRCC."
+      ] }
   ],
   built: [
     { tab: "InternFoxx", animal: "fox", name: "InternFoxx", role: "Co-founder · Student–startup bridge platform", meta: "",
@@ -863,6 +903,8 @@ function countUp(){
     if (k < 1) requestAnimationFrame(tick);
   })(t0);
 }
+const heroCta = document.getElementById('heroCta');
+if (heroCta && LINKS.resume){ heroCta.lastElementChild.outerHTML = `<a class="btn" href="${esc(LINKS.resume)}" target="_blank" rel="noopener">${ICON.download}Resume</a>`; }
 const heroBtns = document.getElementById('heroBtns'); if (heroBtns) heroBtns.innerHTML = `
   <a class="btn dark" href="${esc(LINKS.resume || '#contact')}" ${LINKS.resume ? 'target="_blank" rel="noopener"' : ''}>${ICON.download}View Resume</a>
   <a class="btn" href="mailto:${esc(LINKS.email)}">${ICON.mail}Email Me</a>
@@ -874,14 +916,14 @@ document.querySelectorAll('[data-car]').forEach(root => {
   const tabsEl = root.querySelector('.tabs'), hopper = root.querySelector('.hopper'), panel = root.querySelector('.panel'),
         count = root.querySelector('.count'), media = root.querySelector('.media');
   root.querySelector('.prev').innerHTML = ICON.left; root.querySelector('.next').innerHTML = ICON.right;
-  tabsEl.innerHTML = items.map((it, i) => `<button class="tab" role="tab" id="${key}-t${i}" data-i="${i}">${it.tab}</button>`).join('');
+  tabsEl.innerHTML = items.map((it, i) => `<button class="tab" role="tab" id="${key}-t${i}" data-i="${i}">${it.ongoing ? '<span class="live" aria-hidden="true"></span>' : ''}${it.tab}</button>`).join('');
   const tabs = [...tabsEl.children];
   let cur = -1, busy = false;
   function fill(i, animate){
     const it = items[i];
     tabs.forEach((t, j) => t.setAttribute('aria-selected', j === i ? 'true' : 'false'));
     panel.setAttribute('aria-labelledby', `${key}-t${i}`);
-    panel.innerHTML = `<h3>${it.name}</h3><div class="r">${it.role}${it.meta ? ` <small>· ${it.meta}</small>` : ''}</div>${it.points.length ? `<ul class="dots">${it.points.map(p => `<li>${p}</li>`).join('')}</ul>` : ''}`;
+    panel.innerHTML = `<h3>${it.name}${it.ongoing ? ' <span class="now"><span class="live"></span>Ongoing</span>' : ''}</h3><div class="r">${it.role}${it.meta ? ` <small>· ${it.meta}</small>` : ''}</div>${it.points.length ? `<ul class="dots">${it.points.map(p => `<li>${p}</li>`).join('')}</ul>` : ''}`;
     count.textContent = `${i + 1} / ${items.length}`;
     if (media){
       media.innerHTML = (it.media || []).map(m => {
