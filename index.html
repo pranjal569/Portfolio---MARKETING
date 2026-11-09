@@ -133,6 +133,12 @@ button{font:inherit;color:inherit}
 .avail{display:inline-flex;align-items:center;font-size:13px;font-weight:500;color:#1f2f52;margin-top:2px}
 .worked{font-size:12.5px;color:#3a4a6b;letter-spacing:.02em}
 .worked b{font-weight:600;color:var(--ink)}
+.scroll-cue{justify-self:start;display:inline-flex;align-items:center;gap:12px;margin-top:22px;text-decoration:none;font-size:11.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);opacity:.75;transition:opacity .2s}
+.scroll-cue:hover{opacity:1}
+.scroll-cue .mouse{position:relative;width:20px;height:32px;border:1.6px solid var(--ink);border-radius:12px;box-sizing:border-box}
+.scroll-cue .mouse span{position:absolute;left:50%;top:6px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--dot);animation:wheel 1.8s ease-in-out infinite}
+@keyframes wheel{0%{opacity:0;transform:translateY(0)}25%{opacity:1}70%{opacity:1;transform:translateY(9px)}100%{opacity:0;transform:translateY(11px)}}
+@media (prefers-reduced-motion: reduce){.scroll-cue .mouse span{animation:none}}
 .school i{font-style:normal;color:var(--dot);font-weight:700}
 .path{position:relative;justify-self:start;width:min(100%,540px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:12px}
 .path .track{position:absolute;left:12.5%;right:12.5%;top:7px;height:2px;border-radius:2px;background:rgba(20,36,74,.16)}
@@ -385,13 +391,7 @@ footer a{text-decoration:none}
         <span class="node"><i></i>Founder</span>
         <span class="node"><i></i>Builder</span>
       </div>
-      <p class="hero-lede">I turn attention into growth: 23M+ organic views, creator-led campaigns and a startup built from zero.</p>
-      <div class="hero-cta" id="heroCta">
-        <a class="btn dark" href="#internships">See my work</a>
-        <a class="btn" href="#contact">Get in touch</a>
-      </div>
-      <p class="avail"><span class="live" aria-hidden="true"></span>Open to brand &amp; growth roles · Remote till May 2027</p>
-      <p class="worked">Worked with <b>Garena</b> · <b>ITC</b> · <b>HT Media</b> · <b>Scaler</b> · <b>WENA</b></p>
+      <a class="scroll-cue" href="#internships" aria-label="Scroll to Internships"><span class="mouse" aria-hidden="true"><span></span></span>Scroll</a>
     </div>
   </div>
 </header>
