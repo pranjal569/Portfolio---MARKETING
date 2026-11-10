@@ -1147,7 +1147,7 @@ document.getElementById('brandRow').innerHTML = BRAND_WORK.map((b, i) => `
     </span>
   </button>`).join('');
 (() => {
-  const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+  const PDFJS = ['https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/', 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/'];
   const $ = id => document.getElementById(id);
   const deck = $('deck'), stage = $('deckStage'), cover = $('deckCover'), spin = $('deckSpin'),
         prev = $('deckPrev'), next = $('deckNext'), count = $('deckCount'), name = $('deckName'), open = $('deckOpen'), fs = $('deckFs');
@@ -1155,11 +1155,12 @@ document.getElementById('brandRow').innerHTML = BRAND_WORK.map((b, i) => `
   prev.innerHTML = ICON.left; next.innerHTML = ICON.right;
   let lib = null, cur = -1, doc = null, page = 1, token = 0, task = null;
   const docs = {};
-  const loadLib = () => lib || (lib = new Promise((res, rej) => {
-    const sc = document.createElement('script'); sc.src = PDFJS + 'pdf.min.js';
-    sc.onload = () => { window.pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS + 'pdf.worker.min.js'; res(window.pdfjsLib); };
-    sc.onerror = () => { lib = null; rej(new Error('pdf.js failed')); }; document.head.appendChild(sc);
-  }));
+  const tryLoad = base => new Promise((res, rej) => {
+    const sc = document.createElement('script'); sc.src = base + 'pdf.min.js';
+    sc.onload = () => { if (!window.pdfjsLib) return rej(); window.pdfjsLib.GlobalWorkerOptions.workerSrc = base + 'pdf.worker.min.js'; res(window.pdfjsLib); };
+    sc.onerror = () => { sc.remove(); rej(); }; document.head.appendChild(sc);
+  });
+  const loadLib = () => lib || (lib = tryLoad(PDFJS[0]).catch(() => tryLoad(PDFJS[1])).catch(e => { lib = null; throw e; }));
   function showCover(b, i){
     stage.querySelectorAll('canvas').forEach(c => c.remove());
     cover.className = `deck-cover tn-${i + 1}`; cover.innerHTML = `<b>${b.mark}</b><span>${b.more}</span>`; cover.hidden = false;
