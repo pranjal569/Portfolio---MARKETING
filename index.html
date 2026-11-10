@@ -368,7 +368,9 @@ button{font:inherit;color:inherit}
 #leadership .lead-grid{grid-template-columns:minmax(0,.7fr) minmax(0,1fr) minmax(0,1fr) minmax(0,.55fr);gap:clamp(18px,3vw,56px)}
 #leadership .lead-grid .art{height:clamp(240px,42vh,480px)}
 #leadership .lead-grid .art.small{height:clamp(170px,28vh,320px)}
-#leadership .lead-col{gap:10px}
+#leadership .lead-col{gap:10px;align-self:center}
+#leadership .lead-grid{align-items:center}
+@media (min-width:721px){#leadership .lead-col{align-self:stretch;align-content:start}}
 #leadership .lead-col + .lead-col{padding-left:clamp(18px,3vw,56px)}
 #leadership .lead-col h3{font-size:clamp(16px,1.45vw,27px);line-height:1.25}
 #leadership .lead-col .r{font-size:clamp(14px,1.08vw,19px)}
@@ -650,30 +652,28 @@ const SETS = {
   internships: [
     { tab: "Garena", animal: "cheetah", name: "Garena", role: "Marketing Consultant · Super 6 (cricket mobile game)", meta: "Aug – Oct 2026 · Remote",
       points: [
-        "Surveyed college players and turned the insights into new Play Store screenshots and in-game graphics; weekly organic installs rose from <strong>7% to 15%</strong> within a week.",
-        "Sourced cricket and gaming creators and moved deals from paid to barter; creator videos crossed <strong>50K+ views</strong>.",
-        "Pitched the <strong>“Super 6 Creator Cup”</strong>, a live YouTuber tournament, along with campus-tournament and creator-partnership proposals.",
+        "Revamped the Play Store listing using structured user-review analysis; weekly download growth <strong>doubled from 7–8% to 15%</strong>.",
+        "Negotiated barter deals with <strong>10+ creators</strong>, driving 50K+ views for awareness and new users at zero cash spend.",
+        "Led product testing for Super 6 (<strong>1L+ downloads</strong>), turning user reviews and UI/UX feedback into a graphics overhaul.",
         "Worked directly with the Product Head and Marketing Head."
       ] },
     { tab: "ITC PSPD", animal: "elephant", name: "ITC PSPD", role: "Sales & Marketing Intern · FiloServe (sustainable packaging)", meta: "Jun – Jul 2026",
       points: [
-        "Mapped <strong>170 food outlets</strong> across 4 North Delhi micro-markets and found 89% were unorganised, which shaped the go-to-market plan.",
-        "Engaged <strong>88 organised F&amp;B brands</strong>, met product teams of 10+, and secured a product-sampling engagement with Bake 5 Pizza.",
-        "Surveyed 50+ outlets on ground and built a packaging cost comparison from 35+ supplier listings.",
-        "Proposed a distributor-led entry and a compliance-led pitch built on the Plastic Waste Management (Amendment) Rules 2026."
+        "Designed a GTM strategy for a <strong>₹32,900 Cr market</strong>: distributor-led B2B entry plus on-pack B2C messaging, with a case study as proof of concept.",
+        "Built a 5-substrate cost model from <strong>35+ suppliers</strong> (₹0.42–1.80/unit) and used the 2026 Plastic Waste Rules to position pricing as a legal safeguard.",
+        "Surveyed <strong>50+ outlets</strong> on ground (89% unorganised) at 3 visits a day, turning a cold pitch into sample interest from a top pizza brand."
       ] },
     { tab: "HT Media", animal: "parrot", name: "HT Media", role: "Business Development Intern · Mosaic Digital (VCCEdge)", meta: "Remote",
       points: [
-        "Built a prospect database of <strong>500+ researchers</strong> across 50+ universities for VCCEdge's academic subscriptions.",
-        "Screened <strong>100+ high-intent leads</strong> every week using a repeatable prioritisation framework.",
-        "Ran structured cold-email campaigns to department heads and faculty, using Lusha for contact discovery."
+        "Mapped 500+ researchers across 50+ universities and ran email campaigns reaching <strong>100+ leads a week</strong> for VCCEdge, a Tracxn-like platform.",
+        "Managed a <strong>200+ lead CRM pipeline</strong>; personalised, data-led follow-ups cut the sales cycle by 30%.",
+        "Benchmarked Tracxn and similar platforms to sharpen VCCEdge's value proposition and go-to-market messaging."
       ] },
     { tab: "WENA", animal: "eagle", name: "WENA", role: "GTM & Growth Marketing · Women Enabling New Ambitions (NGO)", meta: "Jul – Aug 2026 · Remote",
       points: [
-        "Led a <strong>5-member team</strong> through a 6-week go-to-market engagement for a women's financial-literacy NGO.",
-        "Delivered <strong>10 CSR and NGO sessions</strong> averaging 40+ attendees, rated 4.3/5.",
-        "Revived dormant social handles to <strong>1L+ impressions</strong> and grew followers from 280 to 450.",
-        "Rebuilt the website from scratch with SEO and cut page load time by 3 seconds; handed over a 10+ page playbook."
+        "Grew LinkedIn from <strong>620 to 900+ followers</strong> (45%) with story-led content, reviving a SEBI-registered NGO's digital presence.",
+        "Rebuilt the website myself and removed a 3-second load delay; <strong>CTR rose 16%</strong>, guided by mapping 10+ competitors.",
+        "Led 360° marketing with a 3-member team: 5+ GTM reports, <strong>150+ organisations</strong> reached, and financial-literacy sessions for 200+ women, rated 4.3/5."
       ] },
     { tab: "Scaler", animal: "owl", ongoing: true, name: "Scaler", role: "Content Writer Intern · SEO", meta: "Nov 2026 – Present · Remote",
       points: [
@@ -685,19 +685,19 @@ const SETS = {
   built: [
     { tab: "YouTube", animal: "peacock", name: "YouTube", role: "Creator · EdTech channel", meta: "5+ years",
       points: [
-        "<strong>75L+ YouTube views</strong> and 8.5K+ subscribers.",
-        "One video crossed <strong>1M views in 5 days</strong>.",
-        "Brand partnerships through self-led outreach: Red Bull, Physics Wallah, Frido, Educart, Shiksha.com.",
-        "Host of the “Aspire Beads” podcast: 100K+ views, 1.7M+ impressions."
+        "Grew the channel from 0 to <strong>8,500+ subscribers and 80L+ views</strong> through content strategy, SEO and thumbnails.",
+        "Built <strong>₹1L+ total revenue</strong> from ads and brand deals, including ₹20K+ from 3+ international collaborations.",
+        "Pitched and closed <strong>10+ brand deals</strong> solo: Frido, Educart, Physics Wallah, Tutedude, Shiksha.com and more.",
+        "One video hit <strong>10L+ views in 5 days</strong>, bringing 3,400+ subscribers and ₹7,600 in revenue."
       ],
       phones: [
         { img: "proof-yt.webp", label: "@PranjalGunsatiya · 8.53K subs", url: "https://www.youtube.com/@PranjalGunsatiya", alt: "YouTube channel: Pranjal Gunsatiya, 8.53K subscribers" }
       ] },
     { tab: "Instagram", animal: "squirrel", name: "Instagram", role: "Creator · Reels", meta: "",
       points: [
-        "<strong>18M+ Instagram views</strong> across my reels.",
-        "2 reels crossed <strong>5M views</strong> each.",
-        "88–98% of reach came from non-followers."
+        "<strong>18M+ Instagram views</strong> using the same content playbook as YouTube.",
+        "2 reels crossed <strong>5M views</strong> each, one crossed 2M, and 10+ crossed 100K.",
+        "98%+ of reach on top reels came from non-followers."
       ],
       proofs: [
         { img: "proof-ig1-reels.webp", label: "@pranjal._077", sub: "8.1M · 6.1M · 2.2M views", url: "https://www.instagram.com/pranjal._077/", alt: "Top reels on @pranjal._077: 2.2M, 8.1M and 6.1M views" },
@@ -705,10 +705,10 @@ const SETS = {
       ] },
     { tab: "InternFoxx", animal: "fox", name: "InternFoxx", role: "Co-founder · Student–startup bridge platform", meta: "",
       points: [
-        "Grew to <strong>400+ signups</strong> and ₹14.1K revenue on ₹1.2K total spend.",
-        "Designed and built internfoxx.in including SEO: <strong>71.9% CTR</strong>, average position 3.8.",
-        "One indirect-promotion reel drove <strong>500K+ views</strong> and 10K+ comments.",
-        "Led a 6-week GTM engagement for NGO WENA: 10 sessions, 40+ average attendees, rated 4.3/5.",
+        "Built internfoxx.in end to end (design, development and SEO): <strong>71.9% CTR</strong>, average Google position 3.8.",
+        "<strong>400+ signups</strong> and <strong>₹17K+ revenue</strong> on just ₹1.2K spend.",
+        "Signed our first B2B client: a <strong>₹30,000</strong> engagement.",
+        "Organic growth engine: <strong>4.9L+ Instagram views</strong> and 3.4L+ reach across 6 reels (88% non-followers), plus 1.4L+ LinkedIn impressions, all at zero paid spend.",
         "Users have landed internships at FICCI, Grant Thornton, Tata 1mg, DLF and IndiGo."
       ],
       media: [
@@ -730,7 +730,7 @@ const LEADERSHIP = [
   { animal: "lion", name: "Business Conclave, SRCC Student Union", role: "Junior Coordinator", meta: "Jan – Mar 2025",
     points: [ "Grew Instagram from <strong>6K to 95K followers</strong> and views from 1M to 8M+.", "Event delivered <strong>30,000+ footfall</strong>, a ₹31L budget and 40+ speakers." ] },
   { animal: "bee", name: "NSS SRCC", role: "Technical & Marketing Head", meta: "",
-    points: [ "One of 2 Heads selected from 120+ volunteers.", "Grew Samarpan's reach <strong>5x year-on-year</strong> to 25K.", "Led the “SOCH” video series: 150K+ views." ] }
+    points: [ "<strong>1 of 2 Heads</strong> picked from 120+ volunteers; scaled digital reach 5x and impressions 25x year-on-year.", "Ran marketing and tech for Samarpan, the flagship fest, taking cumulative reach to <strong>25K+</strong>.", "Led SOCH, a video series with <strong>1.5L+ views</strong> and 200+ hours of watch time.", "Co-led a 30+ member team: Instagram followers up 17%, content views up 67%." ] }
 ];
 
 /* =========================================================
