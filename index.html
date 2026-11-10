@@ -242,6 +242,45 @@ button{font:inherit;color:inherit}
 #built .tile .cap{font-size:clamp(11.5px,.85vw,14px)}
 #built .tile .cap b{font-size:clamp(14px,1.05vw,19px)}
 @media (max-width:720px){#built.box{min-height:0;padding-block:56px 40px}#built .art{height:240px}}
+/* built: phone-mockup proof */
+#built[data-mode="phones"] .built-grid,#built[data-mode="proofs"] .built-grid{grid-template-columns:minmax(0,.72fr) minmax(0,1.15fr) minmax(0,1.13fr)}
+#built[data-mode="phones"] .art,#built[data-mode="proofs"] .art{height:clamp(200px,34vh,420px)}
+.media.has-proofs{display:block;align-self:center}
+.proofs{display:flex;flex-direction:column;gap:clamp(18px,3vh,30px);max-width:640px;margin-inline:auto}
+.proof{margin:0;display:flex;flex-direction:column;gap:9px}
+.proof .plabel{justify-content:flex-start;text-align:left;font-size:clamp(13px,.9vw,15px)}
+.proof .plabel em{font-style:normal;font-weight:500;color:var(--ink-2)}
+.proof .plabel em::before{content:"·";margin-right:8px}
+.proof .plabel a{margin-left:auto}
+.proof .strip{border-radius:14px}
+.media.has-phones{display:block;align-self:center}
+.phones{display:flex;justify-content:center;align-items:flex-start;gap:clamp(14px,1.6vw,26px);--ph:clamp(380px,68vh,700px)}
+.phones.n2{--ph:clamp(320px,52vh,560px)}
+.phone-wrap{margin:0;flex:1 1 0;min-width:0;max-width:calc(var(--ph) * .4615);display:flex;flex-direction:column;align-items:stretch;gap:10px}
+.phone{position:relative;display:block;width:100%;aspect-ratio:923/2000;padding:3.6%;border:0;border-radius:15%/7%;
+  background:linear-gradient(145deg,#2b2f3a,#0d0f14 45%,#1b1e26);cursor:zoom-in;
+  box-shadow:0 0 0 1.5px #3a3f4c inset,0 0 0 1px rgba(255,255,255,.06),0 28px 50px -24px rgba(20,36,74,.55),0 10px 18px -12px rgba(20,36,74,.4);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.phone::before{content:"";position:absolute;z-index:2;left:50%;top:5.2%;transform:translateX(-50%);width:30%;height:2.6%;border-radius:999px;background:#05060a}
+.phone::after{content:"";position:absolute;right:-1.2%;top:22%;width:1.2%;height:11%;border-radius:0 3px 3px 0;background:#2b2f3a}
+.phone img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;border-radius:12%/5.6%;background:#000}
+.phone:hover{transform:translateY(-6px) rotate(-.6deg)}
+.phones.n2 .phone-wrap:nth-child(2) .phone:hover{transform:translateY(-6px) rotate(.6deg)}
+.phone:focus-visible,.strip:focus-visible{outline:3px solid #e1306c;outline-offset:4px}
+.strip{display:block;width:100%;padding:0;border:0;border-radius:12px;overflow:hidden;background:#000;cursor:zoom-in;
+  box-shadow:0 0 0 1px rgba(20,36,74,.12),0 12px 22px -14px rgba(20,36,74,.6);transition:transform .3s}
+.strip:hover{transform:translateY(-3px)}
+.strip img{display:block;width:100%;height:auto}
+.plabel{display:flex;justify-content:center;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:clamp(12px,.82vw,14px);font-weight:600;color:var(--ink);text-align:center;line-height:1.3}
+.plabel a{color:var(--ink-2);font-weight:500;text-decoration:none;border-bottom:1px solid currentColor}
+.plabel a:hover{color:var(--ink)}
+#lb{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:4vh 4vw;background:rgba(8,12,24,.86);backdrop-filter:blur(6px);opacity:0;transition:opacity .2s;cursor:zoom-out}
+#lb[hidden]{display:none}
+#lb.on{opacity:1}
+#lb img{max-width:min(92vw,520px);max-height:90vh;width:auto;height:auto;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+#lb.wide img{max-width:min(94vw,1180px);border-radius:12px}
+.lb-x{position:absolute;top:14px;right:16px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:28px;line-height:1;cursor:pointer}
+.lb-x:hover{background:rgba(255,255,255,.26)}
 .built-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.35fr) minmax(0,.85fr);gap:clamp(16px,2.4vw,30px);align-items:start}
 .built-mid{display:grid;gap:18px;border-left:1px solid var(--line);padding-left:clamp(16px,2.4vw,30px);min-width:0}
 .media{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-self:center}
@@ -346,6 +385,10 @@ footer a{text-decoration:none}
   .built-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
   .media{grid-column:1 / -1;grid-template-columns:repeat(3,minmax(0,1fr))}
   .media .tile.wide{grid-column:auto;aspect-ratio:4/5}
+  #built[data-mode] .built-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+  .media.has-phones,.media.has-proofs{margin-top:8px}
+  .phones{--ph:560px}
+  .phones.n2{--ph:500px}
   .lead-grid{grid-template-columns:minmax(0,.6fr) minmax(0,1fr) minmax(0,1fr)}
   .lead-grid > .art.small{display:none}
 }
@@ -354,6 +397,11 @@ footer a{text-decoration:none}
   .hero-art{height:300px;max-width:380px;width:100%;margin:0 auto}
   .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
   .built-mid{border-left:0;padding-left:0}
+  #built[data-mode] .built-grid{grid-template-columns:minmax(0,1fr)}
+  .proof .plabel{flex-wrap:nowrap}
+  .proof .plabel em{display:none}
+  .phones{--ph:min(560px,118vw)}
+  .phones.n2{--ph:min(480px,96vw);gap:12px}
   .brand-row{grid-template-columns:repeat(2,minmax(0,1fr))}
   .lead-col + .lead-col{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:14px}
   .lead-grid > .art.small{display:block}
@@ -480,7 +528,7 @@ const LINKS = {
   linkedin: "",   // paste your LinkedIn URL
   resume: "",     // paste your resume link (Drive/PDF)
   instagram: "https://www.instagram.com/pranjall_verse/",
-  youtube: ""     // paste your YouTube channel URL
+  youtube: "https://www.youtube.com/@PranjalGunsatiya"
 };
 
 // Opening video (optional). Empty = the drawn golden-orb opening is used.
@@ -543,15 +591,13 @@ const SETS = {
   built: [
     { tab: "YouTube", animal: "peacock", name: "YouTube", role: "Creator · EdTech channel", meta: "5+ years",
       points: [
-        "<strong>75L+ YouTube views</strong> and 7.6K+ subscribers.",
+        "<strong>75L+ YouTube views</strong> and 8.5K+ subscribers.",
         "One video crossed <strong>1M views in 5 days</strong>.",
         "Brand partnerships through self-led outreach: Red Bull, Physics Wallah, Frido, Educart, Shiksha.com.",
         "Host of the “Aspire Beads” podcast: 100K+ views, 1.7M+ impressions."
       ],
-      media: [
-        { img: "", url: "", title: "7.6K+ subscribers", cap: "The channel" },
-        { img: "", url: "", title: "100K+ views", cap: "“Aspire Beads” podcast" },
-        { img: "", url: "", title: "1M+ in 5 days", cap: "Most-watched YouTube video", wide: true }
+      phones: [
+        { img: "proof-yt.webp", label: "@PranjalGunsatiya · 8.53K subs", url: "https://www.youtube.com/@PranjalGunsatiya", alt: "YouTube channel: Pranjal Gunsatiya, 8.53K subscribers" }
       ] },
     { tab: "Instagram", animal: "squirrel", name: "Instagram", role: "Creator · Reels", meta: "",
       points: [
@@ -559,10 +605,9 @@ const SETS = {
         "2 reels crossed <strong>5M views</strong> each.",
         "88–98% of reach came from non-followers."
       ],
-      media: [
-        { img: "", url: "", title: "5M+ views", cap: "Top reel" },
-        { img: "", url: "", title: "5M+ views", cap: "Top reel" },
-        { img: "", url: "", title: "18M+ views", cap: "The profile", wide: true }
+      proofs: [
+        { img: "proof-ig1-reels.webp", label: "@pranjal._077", sub: "8.1M · 6.1M · 2.2M views", url: "https://www.instagram.com/pranjal._077/", alt: "Top reels on @pranjal._077: 2.2M, 8.1M and 6.1M views" },
+        { img: "proof-ig2-reels.webp", label: "@pranjall_verse", sub: "169K · 155K · 86.1K views", url: "https://www.instagram.com/pranjall_verse/", alt: "Reels on @pranjall_verse: 155K, 169K and 86.1K views" }
       ] },
     { tab: "InternFoxx", animal: "fox", name: "InternFoxx", role: "Co-founder · Student–startup bridge platform", meta: "",
       points: [
@@ -954,7 +999,22 @@ document.querySelectorAll('[data-car]').forEach(root => {
     panel.setAttribute('aria-labelledby', `${key}-t${i}`);
     panel.innerHTML = `<h3>${it.name}${it.ongoing ? ' <span class="now"><span class="live"></span>Ongoing</span>' : ''}</h3><div class="r">${it.role}${it.meta ? ` <small>· ${it.meta}</small>` : ''}</div>${it.points.length ? `<ul class="dots">${it.points.map(p => `<li>${p}</li>`).join('')}</ul>` : ''}`;
     count.textContent = `${i + 1} / ${items.length}`;
-    if (media){
+    if (media) root.dataset.mode = it.phones ? 'phones' : it.proofs ? 'proofs' : 'tiles';
+    if (media && it.proofs){
+      media.classList.remove('has-phones'); media.classList.add('has-proofs');
+      media.innerHTML = `<div class="proofs">${it.proofs.map(p => `<figure class="proof">
+        <figcaption class="plabel"><span>${esc(p.label)}</span><em>${esc(p.sub || '')}</em>${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">Open ↗</a>` : ''}</figcaption>
+        <button type="button" class="strip" data-zoom="${esc(p.img)}" aria-label="Zoom: ${esc(p.alt || p.label)}"><img src="${esc(p.img)}" alt="${esc(p.alt || p.label)}" loading="lazy" decoding="async"></button>
+      </figure>`).join('')}</div>`;
+    } else if (media && it.phones){
+      media.classList.remove('has-proofs'); media.classList.add('has-phones');
+      media.innerHTML = `<div class="phones n${it.phones.length}">${it.phones.map(p => `<figure class="phone-wrap">
+        <button type="button" class="phone" data-zoom="${esc(p.img)}" aria-label="Zoom: ${esc(p.alt || p.label)}"><img src="${esc(p.img)}" alt="${esc(p.alt || p.label)}" loading="lazy" decoding="async"></button>
+        ${p.strip ? `<button type="button" class="strip" data-zoom="${esc(p.strip)}" aria-label="Zoom: ${esc(p.stripAlt || '')}"><img src="${esc(p.strip)}" alt="${esc(p.stripAlt || '')}" loading="lazy" decoding="async"></button>` : ''}
+        <figcaption class="plabel"><span>${esc(p.label)}</span>${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">Open ↗</a>` : ''}</figcaption>
+      </figure>`).join('')}</div>`;
+    } else if (media){
+      media.classList.remove('has-phones','has-proofs');
       media.innerHTML = (it.media || []).map(m => {
         const tagName = m.url ? 'a' : 'div';
         return `<${tagName} class="tile${m.wide ? ' wide' : ''}${m.img ? ' has-img' : ''}" ${m.url ? `href="${esc(m.url)}" target="_blank" rel="noopener"` : ''}>${m.img ? `<img src="${esc(m.img)}" alt="">` : ''}<span class="play">${ICON.play}</span><span class="cap"><b>${m.title}</b>${m.cap}</span></${tagName}>`;
@@ -1342,6 +1402,22 @@ addEventListener('scroll', () => sticky.classList.toggle('show', scrollY > heroE
   let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(resize, 120); });
   resize();
   requestAnimationFrame(frame);
+})();
+</script>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Proof screenshot" hidden><button type="button" class="lb-x" aria-label="Close">×</button><img alt=""></div>
+<script>
+(() => {
+  const lb = document.getElementById('lb'), im = lb.querySelector('img');
+  let last = null;
+  const close = () => { lb.classList.remove('on'); setTimeout(() => { lb.hidden = true; im.src = ''; }, 200); document.documentElement.style.overflow = ''; last && last.focus(); };
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-zoom]');
+    if (b){ last = b; const src = b.querySelector('img'); im.src = b.dataset.zoom; im.alt = src ? src.alt : '';
+      lb.classList.toggle('wide', b.classList.contains('strip'));
+      lb.hidden = false; requestAnimationFrame(() => lb.classList.add('on')); document.documentElement.style.overflow = 'hidden'; lb.querySelector('.lb-x').focus(); return; }
+    if (!lb.hidden && (e.target === lb || e.target.closest('.lb-x') || e.target === im)) close();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) close(); });
 })();
 </script>
 </body>
