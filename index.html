@@ -318,6 +318,22 @@ button{font:inherit;color:inherit}
 .view svg{width:13px;height:13px;transition:transform .25s}
 .view[aria-expanded="true"] svg{transform:rotate(90deg)}
 
+/* brands marquee */
+.brands-band{box-sizing:border-box;width:100%;padding:clamp(26px,4.5vh,48px) 0;background:var(--card);border-block:1px solid var(--line);overflow:hidden}
+.brands-label{margin:0 0 clamp(14px,2.2vh,22px);text-align:center;font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2)}
+.marquee{position:relative;overflow:hidden;background:var(--card);-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.marquee-track{display:flex;width:max-content;animation:marq 38s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track ul{display:flex;align-items:center;margin:0;padding:0;list-style:none}
+.bm{display:flex;align-items:center;flex:none;padding:0 clamp(22px,2.6vw,44px);position:relative}
+.bm::after{content:"";position:absolute;right:-3px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--dot)}
+.bm span{font-weight:800;font-size:clamp(20px,2vw,34px);letter-spacing:-.01em;white-space:nowrap;color:var(--ink);opacity:.5;transition:opacity .25s}
+.bm:hover span{opacity:1}
+.bm img{display:block;height:clamp(28px,2.8vw,44px);width:auto;max-width:170px;object-fit:contain;filter:grayscale(1);opacity:.65;mix-blend-mode:multiply;transition:filter .25s,opacity .25s}
+.bm:hover img{filter:none;opacity:1}
+@keyframes marq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.marquee-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.marquee-track ul[aria-hidden]{display:none}.marquee{-webkit-mask-image:none;mask-image:none}.marquee-track ul{flex-wrap:wrap;justify-content:center;row-gap:12px}}
+
 /* brand + leadership: full-screen bands like internships */
 #brand.box,#leadership.box{box-sizing:border-box;width:100%;max-width:none;margin-inline:0;border-radius:0;border-left:0;border-right:0;min-height:100vh;min-height:100svh;
   display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,3.4vh,40px);
@@ -572,6 +588,12 @@ footer a{text-decoration:none}
     </div>
   </section>
 
+  <!-- BRANDS MARQUEE -->
+  <section class="brands-band" aria-label="Brands I've worked with">
+    <p class="brands-label">Brands I've worked with</p>
+    <div class="marquee"><div class="marquee-track" id="brandsTrack"></div></div>
+  </section>
+
   <!-- BRAND WORK -->
   <section class="box" id="brand">
     <div class="brand-head"><h2>Brand Work</h2><p class="sub">Campaigns, pitches and spec work I created for brands.</p></div>
@@ -717,6 +739,15 @@ const SETS = {
       ] }
   ]
 };
+
+// Brands I've worked with. Upload a logo to the repo root with the exact "logo" file name
+// and it replaces the text automatically. No logo file = the name shows.
+const BRANDS = [
+  { name: "Red Bull", logo: "redbull.png" }, { name: "Swish", logo: "swish.png" }, { name: "Be10x", logo: "be10x.png" },
+  { name: "Alien Kind", logo: "alienkind.png" }, { name: "Frido", logo: "frido.png" }, { name: "Physics Wallah", logo: "pw.png" },
+  { name: "Educart", logo: "educart.png" }, { name: "Shiksha.com", logo: "shiksha.png" }, { name: "SuperProfile", logo: "superprofile.png" },
+  { name: "Tutedude", logo: "tutedude.png" }, { name: "DU Buddy", logo: "dubuddy.png" }, { name: "Bake 5", logo: "bake5.png" }
+];
 
 // pdf: put the deck PDF in the repo root with this exact file name. Until it's there, a cover slide shows instead.
 const BRAND_WORK = [
@@ -1220,6 +1251,19 @@ document.getElementById('brandRow').innerHTML = BRAND_WORK.map((b, i) => `
     const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)){ io.disconnect(); start(); } }, { rootMargin: '800px 0px' });
     io.observe(document.getElementById('brand'));
   } else start();
+})();
+
+// brands marquee (list rendered twice for a seamless loop)
+(() => {
+  const t = document.getElementById('brandsTrack'); if (!t) return;
+  const one = BRANDS.map((b, i) => `<li class="bm" data-b="${i}"><span>${esc(b.name)}</span></li>`).join('');
+  t.innerHTML = `<ul>${one}</ul><ul aria-hidden="true">${one}</ul>`;
+  BRANDS.forEach((b, i) => {
+    if (!b.logo) return;
+    const im = new Image();
+    im.onload = () => t.querySelectorAll(`.bm[data-b="${i}"]`).forEach(li => { li.classList.add('has-logo'); li.innerHTML = `<img src="${esc(b.logo)}" alt="${esc(b.name)}">`; });
+    im.src = b.logo;
+  });
 })();
 
 // leadership
