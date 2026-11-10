@@ -329,8 +329,10 @@ button{font:inherit;color:inherit}
 .bm::after{content:"";position:absolute;right:-3px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--dot)}
 .bm span{font-weight:800;font-size:clamp(20px,2vw,34px);letter-spacing:-.01em;white-space:nowrap;color:var(--ink);opacity:.5;transition:opacity .25s}
 .bm:hover span{opacity:1}
-.bm img{display:block;height:clamp(28px,2.8vw,44px);width:auto;max-width:170px;object-fit:contain;filter:grayscale(1);opacity:.65;mix-blend-mode:multiply;transition:filter .25s,opacity .25s}
-.bm:hover img{filter:none;opacity:1}
+.bm img{display:block;height:calc(clamp(30px,2.7vw,44px) * var(--s,1));width:auto;max-width:220px;object-fit:contain;border-radius:6px;transition:transform .25s}
+.bm:hover img{transform:scale(1.06)}
+.marquee-track{align-items:center}
+.marquee-track ul{min-height:calc(clamp(30px,2.7vw,44px) * 1.45)}
 @keyframes marq{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion: reduce){.marquee-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.marquee-track ul[aria-hidden]{display:none}.marquee{-webkit-mask-image:none;mask-image:none}.marquee-track ul{flex-wrap:wrap;justify-content:center;row-gap:12px}}
 
@@ -743,10 +745,11 @@ const SETS = {
 // Brands I've worked with. Upload a logo to the repo root with the exact "logo" file name
 // and it replaces the text automatically. No logo file = the name shows.
 const BRANDS = [
-  { name: "Red Bull", logo: "redbull.png" }, { name: "Swish", logo: "swish.png" }, { name: "Be10x", logo: "be10x.png" },
-  { name: "Alien Kind", logo: "alienkind.png" }, { name: "Frido", logo: "frido.png" }, { name: "Physics Wallah", logo: "pw.png" },
-  { name: "Educart", logo: "educart.png" }, { name: "Shiksha.com", logo: "shiksha.png" }, { name: "SuperProfile", logo: "superprofile.png" },
-  { name: "Tutedude", logo: "tutedude.png" }, { name: "DU Buddy", logo: "dubuddy.png" }, { name: "Bake 5", logo: "bake5.png" }
+  // size: optional multiplier to balance a logo visually against the others (1 = normal)
+  { name: "Red Bull", logo: "redbull.png", size: 1.45 }, { name: "Swish", logo: "swish.png" }, { name: "Be10x", logo: "be10x.png", size: 1.1 },
+  { name: "Alien Kind", logo: "alienkind.png", size: 1.05 }, { name: "Frido", logo: "frido.png" }, { name: "Physics Wallah", logo: "pw.png", size: 1.3 },
+  { name: "Educart", logo: "educart.png", size: .95 }, { name: "Shiksha.com", logo: "shiksha.png", size: 1.3 }, { name: "SuperProfile", logo: "superprofile.png", size: .8 },
+  { name: "Tutedude", logo: "tutedude.png", size: 1.05 }, { name: "DU Buddy", logo: "dubuddy.png", size: .8 }, { name: "Bake 5", logo: "bake5.png", size: 1.1 }
 ];
 
 // pdf: put the deck PDF in the repo root with this exact file name. Until it's there, a cover slide shows instead.
@@ -1256,7 +1259,7 @@ document.getElementById('brandRow').innerHTML = BRAND_WORK.map((b, i) => `
 // brands marquee (list rendered twice for a seamless loop)
 (() => {
   const t = document.getElementById('brandsTrack'); if (!t) return;
-  const one = BRANDS.map((b, i) => `<li class="bm" data-b="${i}"><span>${esc(b.name)}</span></li>`).join('');
+  const one = BRANDS.map((b, i) => `<li class="bm" data-b="${i}" style="--s:${b.size || 1}"><span>${esc(b.name)}</span></li>`).join('');
   t.innerHTML = `<ul>${one}</ul><ul aria-hidden="true">${one}</ul>`;
   BRANDS.forEach((b, i) => {
     if (!b.logo) return;
