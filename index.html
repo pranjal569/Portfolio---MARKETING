@@ -528,6 +528,10 @@ body::before{content:"";position:fixed;inset:-20vmax;z-index:-1;pointer-events:n
 @keyframes orbs{to{transform:translate(4vmax,-3vmax) rotate(8deg)}}
 @media (prefers-reduced-motion: reduce){body::before,.panel.swap > *{animation:none}}
 
+/* recognition-only band (story removed) */
+.sr.sr-recog{min-height:0!important;grid-template-rows:auto!important}
+.sr.sr-recog .recog-band{padding:clamp(48px,8vh,88px) max(24px,6vw) clamp(40px,6vh,64px)!important}
+
 /* story + recognition: one full-screen section, two calm halves */
 .sr{box-sizing:border-box;width:100%;min-height:100vh;min-height:100svh;display:grid;grid-template-rows:auto auto;border-block:1px solid var(--line);scroll-margin-top:0}
 .sr-half{position:relative;overflow:hidden;display:flex;align-items:center;padding:clamp(84px,10.5vh,116px) max(24px,6vw) clamp(26px,4vh,48px)}
@@ -915,46 +919,17 @@ footer a{text-decoration:none}
     <div class="lead-grid" id="leadGrid"></div>
   </section>
   <!-- STORY + RECOGNITION (full screen) -->
-  <section class="sr" id="story" aria-label="How I got here and recognition">
-    <div class="sr-half story-band" aria-labelledby="storyH">
-      <div class="sr-in">
-        <div class="band-head"><p class="band-label">How I got here</p><h2 id="storyH">The story <em>so far.</em></h2></div>
-        <div class="journey">
-          <svg class="jpath" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0,60 Q100,18 200,60 T400,60 T600,60 T800,60 T1000,60 T1200,60"/></svg>
-          <ol class="moments">
-            <li class="m m1">
-              <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg></span>
-              <span class="m-kicker">The start</span>
-              <h3>Started on a 1GB RAM phone.</h3>
-              <p>Shot my first videos on it. Today the channel has <strong>80L+ views</strong>.</p>
-            </li>
-            <li class="m m2">
-              <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6.5" width="13" height="11" rx="2"/><path d="m15.5 10.5 6-3v9l-6-3"/><circle cx="6.5" cy="10" r="1"/></svg></span>
-              <span class="m-kicker">The promise</span>
-              <h3>Said it on camera. Then did it.</h3>
-              <p>Promised in a public video to crack top internships, earn ₹1L+ and buy an iPhone. <strong>Did all three in 6 months.</strong></p>
-            </li>
-            <li class="m m3">
-              <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span>
-              <span class="m-kicker">The hustle</span>
-              <h3>Cold outreach that works.</h3>
-              <p><strong>25+ interview calls</strong> in 2 months, from cold outreach alone.</p>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </div>
+  <section class="sr sr-recog" id="story" aria-label="Recognition">
     <div class="sr-half recog-band" id="recognition" aria-labelledby="recogH">
       <span class="cloud c1" aria-hidden="true"></span><span class="cloud c2" aria-hidden="true"></span><span class="cloud c3" aria-hidden="true"></span>
       <div class="sr-in">
-        <p class="sub-label" id="recogH"><span>Recognition along the way</span></p>
+        <p class="sub-label" id="recogH"><span>Recognition</span></p>
         <ul class="rc-row">
           <li class="rc"><span class="rc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"/><path d="m8.5 13.5-1.5 7 5-2.5 5 2.5-1.5-7"/></svg></span><span class="rc-yr">2025</span><b>Google Student Ambassador</b><span class="rc-sub">Campus ambassador</span></li>
           <li class="rc"><span class="rc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg></span><span class="rc-yr">2024</span><b>YouTube India Creator Collective</b><span class="rc-sub">Creator programme</span></li>
           <li class="rc"><span class="rc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="15" height="15" rx="2"/><path d="M18 8.5h2.5V18a1.5 1.5 0 0 1-3 0M6.5 8.5h8M6.5 12h8M6.5 15.5h5"/></svg></span><span class="rc-yr">Press</span><b>Featured in Navbharat Times</b><span class="rc-sub">Newspaper feature</span></li>
           <li class="rc"><span class="rc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg></span><span class="rc-yr">Talk</span><b>Guest speaker, Shiksha.com</b><span class="rc-sub">Invited session</span></li>
         </ul>
-        <a class="sr-next" href="#contact">The next chapter<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
       </div>
     </div>
   </section>
@@ -1061,7 +1036,7 @@ const SETS = {
         { img: "proof-ig1-reels.webp", label: "@pranjal._077", sub: "8.1M · 6.1M · 2.2M views", url: "https://www.instagram.com/pranjal._077/", alt: "Top reels on @pranjal._077: 2.2M, 8.1M and 6.1M views" },
         { img: "proof-ig2-reels.webp", label: "@pranjall_verse", sub: "169K · 155K · 86.1K views", url: "https://www.instagram.com/pranjall_verse/", alt: "Reels on @pranjall_verse: 155K, 169K and 86.1K views" }
       ] },
-    { tab: "InternFoxx", animal: "fox", name: "InternFoxx", role: "Co-founder · Student–startup bridge platform", meta: "",
+    { tab: "InternFoxx", animal: "fox", name: "InternFoxx", role: "Founder · Student–startup bridge platform", meta: "",
       points: [
         "Built internfoxx.in end to end: design, development and SEO, ranking at an <strong>average Google position of 3.8</strong>.",
         "<strong>400+ signups</strong> and <strong>₹17K+ revenue</strong> on just ₹1.2K spend.",
