@@ -484,7 +484,7 @@ button{font:inherit;color:inherit}
 
 /* company logo cards (in place of the characters) */
 .art-logo{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-.al-card{position:relative;width:min(86%,340px);aspect-ratio:1;display:grid;place-items:center;border-radius:32px;
+.al-card{position:relative;height:min(90%,340px);width:auto;max-width:92%;aspect-ratio:1;display:grid;place-items:center;border-radius:32px;
   background:linear-gradient(160deg,rgba(255,255,255,.95),rgba(255,255,255,.72));border:1px solid rgba(255,255,255,.95);
   box-shadow:0 40px 70px -40px rgba(60,60,150,.55),0 14px 26px -18px rgba(20,36,74,.3),inset 0 0 0 1px rgba(108,116,214,.12);
   animation:alFloat 6s ease-in-out infinite;backdrop-filter:blur(8px)}
@@ -492,7 +492,7 @@ button{font:inherit;color:inherit}
 .art .al-card img{position:absolute;inset:0;margin:auto;width:100%;height:100%;object-fit:contain;object-position:center;z-index:1}
 .al-card img + b{visibility:hidden}
 .al-card b{font-size:clamp(22px,2.2vw,34px);font-weight:800;letter-spacing:-.02em;color:var(--ink);text-align:center;padding:0 12px;line-height:1.1}
-.art.small .al-card{width:min(80%,220px);border-radius:26px}
+.art.small .al-card{height:min(88%,220px);border-radius:26px}
 @keyframes alFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @media (prefers-reduced-motion: reduce){.al-card{animation:none}}
 
@@ -788,6 +788,63 @@ footer a{text-decoration:none}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   html{scroll-behavior:auto}
+}
+
+/* ===== phone polish: smaller type, compact media ===== */
+@media (max-width:720px){
+  body{font-size:14.5px}
+  .hero.v3 .h3-title{font-size:31px!important;line-height:1.05}
+  .hero.v3 .h3-lede{font-size:14px!important;line-height:1.55}
+  .hero.v3 .school{font-size:12px}
+  .h3-cta .btn{padding:11px 18px!important;font-size:13.5px!important}
+  .hero.v3 .lan-zone{min-height:400px!important}
+  .idb{width:min(224px,60vw)!important}
+  .bf{padding:24px 14px 13px!important}
+  .bf-pass{font-size:8.5px!important;letter-spacing:.1em!important;white-space:nowrap}
+  .bf-meta{font-size:9.5px!important;white-space:nowrap}
+  .bf-name{font-size:19px!important}
+  #internships h2,#built h2,#brand h2,#leadership h2,.box h2{font-size:28px!important;line-height:1.1}
+  .box .sub,#built .sub,#brand .sub{font-size:13.5px!important}
+  #internships.box,#built.box,#brand.box,#leadership.box{padding:44px 20px 36px!important;gap:18px!important}
+  .tabs{gap:6px!important}
+  .tab,#built .tab{font-size:10.5px!important;padding:7px 12px!important}
+  #internships .art,#built .art{height:180px!important}
+  #internships .panel h3,#built .panel h3{font-size:21px!important}
+  #internships .panel .r,#built .panel .r{font-size:13.5px!important}
+  #internships .dots li,#built .dots li,#leadership .lead-col .dots li{font-size:13.5px!important;line-height:1.55}
+  .dots{gap:9px!important}
+  .al-card{border-radius:24px}
+  .al-card::before{inset:-9px;border-radius:30px}
+  .al-card b{font-size:20px}
+  #leadership .lead-grid .art{height:170px!important}
+  #leadership .lead-grid .art.small{height:150px!important}
+  #leadership .lead-col h3{font-size:16px!important}
+  #leadership .lead-col .r{font-size:13.5px!important}
+  .phones{--ph:340px!important}
+  .phones.n2{--ph:300px!important}
+  .media.fan{width:min(100%,330px)!important}
+  .proofs{gap:16px}
+  .bitem .bbody{padding:10px 12px!important}
+  .bname{font-size:12px!important}.bdesc{font-size:12.5px!important}
+  .deck-stage{border-radius:14px}
+  .brands-band{padding:22px 0!important}
+  .bm span{font-size:18px}
+  .bm img{height:calc(26px * var(--s,1))!important}
+  .sr.sr-recog .recog-band{padding:40px 20px 32px!important}
+  .rc{padding:14px 16px!important}
+  .rc b{font-size:14.5px!important}
+  .contact h2{font-size:26px!important}
+  .contact .sub{font-size:13.5px!important}
+  #mail{font-size:13px}
+}
+@media (max-width:720px){.lan-hint{display:none!important}.h3-logo{white-space:nowrap}}
+@media (max-width:380px){
+  .hero.v3 .h3-title{font-size:28px!important}
+  .h3-logo{font-size:14px}
+  .h3-cta{gap:8px!important;flex-wrap:nowrap!important}
+  .h3-cta .btn{padding:10px 14px!important;font-size:13px!important}
+  .hero.v3 .lan-zone{margin-top:20px!important}
+  #internships h2,#built h2,#brand h2,#leadership h2,.box h2{font-size:25px!important}
 }
 </style>
 
