@@ -318,6 +318,69 @@ button{font:inherit;color:inherit}
 .view svg{width:13px;height:13px;transition:transform .25s}
 .view[aria-expanded="true"] svg{transform:rotate(90deg)}
 
+/* story + recognition: one full-screen section, two calm halves */
+.sr{box-sizing:border-box;width:100%;min-height:100vh;min-height:100svh;display:grid;grid-template-rows:auto auto;border-block:1px solid var(--line);scroll-margin-top:0}
+.sr-half{position:relative;overflow:hidden;display:flex;align-items:center;padding:clamp(84px,10.5vh,116px) max(24px,6vw) clamp(26px,4vh,48px)}
+.sr-half + .sr-half{padding-top:clamp(26px,4vh,48px)}
+@media (min-width:761px) and (max-height:760px){.band-head{margin-bottom:14px}.band-label{margin-bottom:4px}.m p{line-height:1.5}.m-ic{box-shadow:0 0 0 6px #fbf7ec,0 10px 24px -16px rgba(20,36,74,.35)}}
+.sr-in{position:relative;width:100%}
+.band-head{text-align:center;margin-bottom:clamp(18px,3.4vh,40px)}
+.band-label{margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2)}
+.band-head h2{font-size:clamp(26px,2.7vw,48px);font-weight:700;line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
+.band-head h2 em{font-style:normal}
+.m-kicker,.rc-yr{font-style:normal;font-weight:500}
+.sr{background:linear-gradient(180deg,#fbf6ea 0%,#fcf8ee 42%,#eef5fd 78%,#f6f9fd 100%)}
+.story-band{background:none}
+.story-band .band-head h2 em{color:#3d6b5a}
+.journey{position:relative}
+.jpath{position:absolute;left:0;right:0;top:0;width:100%;height:clamp(52px,6.5vh,64px);overflow:visible;pointer-events:none}
+.jpath path{fill:none;stroke:#b9c9bf;stroke-width:1.6;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.4s cubic-bezier(.45,.05,.25,1)}
+.sr.in .jpath path{stroke-dashoffset:0}
+.moments{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;padding:0;list-style:none}
+.m{display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(4px,.8vh,8px);padding:0 clamp(16px,2.6vw,48px);opacity:0;transform:translateY(14px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+.sr.in .m{opacity:1;transform:none}
+.sr.in .m2{transition-delay:.5s}
+.sr.in .m3{transition-delay:1s}
+.m-ic{display:grid;place-items:center;width:clamp(52px,6.5vh,64px);height:clamp(52px,6.5vh,64px);border-radius:50%;background:#fff;border:1px solid #e6e0d0;box-shadow:0 0 0 8px #fbf7ec,0 14px 30px -18px rgba(20,36,74,.35);color:#3d6b5a;margin-bottom:clamp(6px,1.2vh,12px)}
+.m2 .m-ic{color:#4a72a8}.m3 .m-ic{color:#b07a3c}
+.m-ic svg{width:44%;height:44%}
+.m-kicker{font-size:clamp(12px,.85vw,13.5px);letter-spacing:.14em;text-transform:uppercase;color:#8a7a5c}
+.m h3{font-size:clamp(17px,1.4vw,24px);font-weight:700;line-height:1.25;letter-spacing:-.01em;color:var(--ink)}
+.m p{font-size:clamp(13.5px,.98vw,16px);line-height:1.6;color:#4a5670;max-width:44ch;text-wrap:balance}
+.m p strong{color:var(--ink);font-weight:600}
+.recog-band{background:none}
+.sub-label{display:flex;align-items:center;gap:18px;margin:0 0 clamp(16px,2.6vh,28px);font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2)}
+.sub-label::before,.sub-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(20,36,74,.18))}
+.sub-label::after{background:linear-gradient(90deg,rgba(20,36,74,.18),transparent)}
+.sr-next{display:flex;width:max-content;align-items:center;gap:10px;margin:clamp(22px,4vh,44px) auto 0;padding:10px 14px 10px 20px;border-radius:999px;background:var(--white);border:1px solid var(--line);
+  font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--ink);text-decoration:none;box-shadow:0 10px 24px -16px rgba(20,36,74,.45);transition:transform .3s,box-shadow .3s}
+.sr-next svg{width:18px;height:18px;padding:5px;border-radius:50%;background:var(--yellow-soft);box-sizing:content-box;animation:bob 2.2s ease-in-out infinite}
+.sr-next:hover{transform:translateY(-2px);box-shadow:0 14px 30px -16px rgba(20,36,74,.5)}
+@keyframes bob{50%{transform:translateY(3px)}}
+.cloud{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,0));pointer-events:none;animation:drift 28s ease-in-out infinite alternate}
+.c1{width:520px;height:200px;left:-120px;top:10px}
+.c2{width:420px;height:170px;right:-80px;top:50px;animation-duration:34s;animation-delay:-8s}
+.c3{width:600px;height:220px;left:35%;bottom:-110px;animation-duration:40s;animation-delay:-16s}
+@keyframes drift{to{transform:translateX(60px)}}
+.rc-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.8vw,28px);margin:0;padding:0;list-style:none}
+.rc{position:relative;display:flex;flex-direction:column;gap:6px;padding:clamp(16px,2.2vh,26px) clamp(18px,1.8vw,28px);border-radius:20px;background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 20px 40px -30px rgba(40,70,120,.45);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+.rc:hover{transform:translateY(-4px);box-shadow:0 26px 50px -28px rgba(40,70,120,.5)}
+.rc-ic{color:#4a72a8;margin-bottom:clamp(4px,1vh,10px)}
+.rc-ic svg{width:clamp(24px,3.2vh,30px);height:clamp(24px,3.2vh,30px);display:block}
+.rc-yr{position:absolute;top:clamp(14px,2vh,24px);right:clamp(18px,1.8vw,28px);font-size:clamp(12.5px,.9vw,14.5px);color:#8a98b0}
+.rc b{font-size:clamp(15px,1.12vw,19px);font-weight:700;line-height:1.3;color:var(--ink)}
+.rc-sub{font-size:clamp(12.5px,.88vw,14.5px);color:#5d6a82}
+@media (prefers-reduced-motion: reduce){.cloud{animation:none}.m{opacity:1;transform:none}.jpath path{stroke-dashoffset:0}}
+@media (max-width:900px){.rc-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){
+  .sr{min-height:0;grid-template-rows:auto}
+  .sr-half{padding-block:56px}
+  .jpath{display:none}
+  .moments{grid-template-columns:minmax(0,1fr);gap:34px;max-width:440px;margin:0 auto}
+}
+@media (max-width:480px){.rc-row{grid-template-columns:minmax(0,1fr)}}
+
 /* brands marquee */
 .brands-band{box-sizing:border-box;width:100%;padding:clamp(26px,4.5vh,48px) 0;background:var(--card);border-block:1px solid var(--line);overflow:hidden}
 .brands-label{margin:0 0 clamp(14px,2.2vh,22px);text-align:center;font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2)}
@@ -561,6 +624,7 @@ footer a{text-decoration:none}
 </header>
 
 <main class="sections">
+
   <!-- INTERNSHIPS -->
   <section class="box" id="internships" data-car="internships">
     <div class="int-head">
@@ -623,6 +687,50 @@ footer a{text-decoration:none}
     <h2>Leadership</h2>
     <div class="lead-grid" id="leadGrid"></div>
   </section>
+  <!-- STORY + RECOGNITION (full screen) -->
+  <section class="sr" id="story" aria-label="How I got here and recognition">
+    <div class="sr-half story-band" aria-labelledby="storyH">
+      <div class="sr-in">
+        <div class="band-head"><p class="band-label">How I got here</p><h2 id="storyH">The story <em>so far.</em></h2></div>
+        <div class="journey">
+          <svg class="jpath" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0,60 Q100,18 200,60 T400,60 T600,60 T800,60 T1000,60 T1200,60"/></svg>
+          <ol class="moments">
+            <li class="m m1">
+              <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg></span>
+              <span class="m-kicker">The start</span>
+              <h3>Started on a 1GB RAM phone.</h3>
+              <p>Shot my first videos on it. Today the channel has <strong>80L+ views</strong>.</p>
+            </li>
+            <li class="m m2">
+              <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6.5" width="13" height="11" rx="2"/><path d="m15.5 10.5 6-3v9l-6-3"/><circle cx="6.5" cy="10" r="1"/></svg></span>
+              <span class="m-kicker">The promise</span>
+              <h3>Said it on camera. Then did it.</h3>
+              <p>Promised in a public video to crack top internships, earn ₹1L+ and buy an iPhone. <strong>Did all three in 6 months.</strong></p>
+            </li>
+            <li class="m m3">
+              <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span>
+              <span class="m-kicker">The hustle</span>
+              <h3>Cold outreach that works.</h3>
+              <p><strong>25+ interview calls</strong> in 2 months, from cold outreach alone.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="sr-half recog-band" id="recognition" aria-labelledby="recogH">
+      <span class="cloud c1" aria-hidden="true"></span><span class="cloud c2" aria-hidden="true"></span><span class="cloud c3" aria-hidden="true"></span>
+      <div class="sr-in">
+        <p class="sub-label" id="recogH"><span>Recognition along the way</span></p>
+        <ul class="rc-row">
+          <li class="rc"><span class="rc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"/><path d="m8.5 13.5-1.5 7 5-2.5 5 2.5-1.5-7"/></svg></span><span class="rc-yr">2025</span><b>Google Student Ambassador</b><span class="rc-sub">Campus ambassador</span></li>
+          <li class="rc"><span class="rc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg></span><span class="rc-yr">2024</span><b>YouTube India Creator Collective</b><span class="rc-sub">Creator programme</span></li>
+          <li class="rc"><span class="rc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="15" height="15" rx="2"/><path d="M18 8.5h2.5V18a1.5 1.5 0 0 1-3 0M6.5 8.5h8M6.5 12h8M6.5 15.5h5"/></svg></span><span class="rc-yr">Press</span><b>Featured in Navbharat Times</b><span class="rc-sub">Newspaper feature</span></li>
+          <li class="rc"><span class="rc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg></span><span class="rc-yr">Talk</span><b>Guest speaker, Shiksha.com</b><span class="rc-sub">Invited session</span></li>
+        </ul>
+        <a class="sr-next" href="#contact">The next chapter<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <section class="contact" id="contact">
@@ -632,7 +740,6 @@ footer a{text-decoration:none}
     <p class="sub">Open to brand &amp; growth marketing roles. Remote till May 2027, Bengaluru after.</p>
     <div class="mail" id="mail"></div>
     <div class="socials" id="socials"></div>
-    <div class="recog"><span>Google Student Ambassador</span><span>YouTube India Creator Collective</span><span>Navbharat Times feature</span><span>Shiksha.com guest speaker</span></div>
   </div>
   <footer><div class="wrap"><span>© 2026 Pranjal Singh. Built with <span style="color:#e4312b">♥</span></span><a href="#top">Scroll to top ↑</a></div></footer>
 </section>
@@ -711,7 +818,8 @@ const SETS = {
         "Grew the channel from 0 to <strong>8,500+ subscribers and 80L+ views</strong> through content strategy, SEO and thumbnails.",
         "Built <strong>₹1L+ total revenue</strong> from ads and brand deals, including ₹20K+ from 3+ international collaborations.",
         "Pitched and closed <strong>10+ brand deals</strong> solo: Frido, Educart, Physics Wallah, Tutedude, Shiksha.com and more.",
-        "One video hit <strong>10L+ views in 5 days</strong>, bringing 3,400+ subscribers and ₹7,600 in revenue."
+        "One video hit <strong>10L+ views in 5 days</strong>, bringing 3,400+ subscribers and ₹7,600 in revenue.",
+        "Host of the “Aspire Beads” podcast: <strong>100K+ views</strong> and 1.7M+ impressions."
       ],
       phones: [
         { img: "proof-yt.webp", label: "@PranjalGunsatiya · 8.53K subs", url: "https://www.youtube.com/@PranjalGunsatiya", alt: "YouTube channel: Pranjal Gunsatiya, 8.53K subscribers" }
@@ -1254,6 +1362,23 @@ document.getElementById('brandRow').innerHTML = BRAND_WORK.map((b, i) => `
     const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)){ io.disconnect(); start(); } }, { rootMargin: '800px 0px' });
     io.observe(document.getElementById('brand'));
   } else start();
+})();
+
+// story band: reveal + count-up
+(() => {
+  const band = document.querySelector('.sr'); if (!band) return;
+  const run = () => {
+    band.classList.add('in');
+    band.querySelectorAll('[data-count]').forEach(el => {
+      const end = +el.dataset.count, t0 = performance.now(), dur = 1400;
+      const step = t => { const k = Math.min(1, (t - t0) / dur); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); };
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches){ el.textContent = '0'; requestAnimationFrame(step); }
+    });
+  };
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)){ io.disconnect(); run(); } }, { threshold: .35 });
+    io.observe(band);
+  } else run();
 })();
 
 // brands marquee (list rendered twice for a seamless loop)
