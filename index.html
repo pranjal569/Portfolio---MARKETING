@@ -409,6 +409,38 @@ button{font:inherit;color:inherit}
   .lan-hint{left:50%;top:auto;bottom:0;transform:translateX(-50%)}
 }
 
+
+/* v3 polish: wider 16:9 layout, soft colour, fine outlines */
+.hero.v3{background:#f8f7fc}
+.h3-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.h3-bg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(91,99,190,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(91,99,190,.07) 1px,transparent 1px);background-size:72px 72px;
+  -webkit-mask-image:radial-gradient(ellipse 75% 70% at 60% 40%,#000 25%,transparent 78%);mask-image:radial-gradient(ellipse 75% 70% at 60% 40%,#000 25%,transparent 78%)}
+.h3-bg span{position:absolute;border-radius:50%;filter:blur(80px);opacity:.7}
+.h3-bg .g1{width:42vw;height:42vw;right:2vw;top:-10vw;background:#dcd9ff}
+.h3-bg .g2{width:30vw;height:30vw;left:-6vw;top:18vh;background:#ffe6cf;opacity:.6}
+.h3-bg .g3{width:28vw;height:28vw;left:40vw;bottom:-8vw;background:#d4f1ea;opacity:.55}
+.hero.v3 > .wrap{max-width:none;width:100%;box-sizing:border-box;padding-inline:max(24px,5.5vw)}
+.hero.v3 .h3-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;padding-top:clamp(10px,3vh,40px);padding-bottom:clamp(120px,22vh,250px)}
+.hero.v3 .h3-copy{max-width:none}
+.hero.v3 .h3-title{font-size:clamp(34px,4.1vw,80px);line-height:1.02}
+.h3-title .l1,.h3-title .l2{display:block;white-space:nowrap}
+.h3-title .l1{color:var(--ink)}
+.h3-title .l2{background:linear-gradient(90deg,#6c74d6,#9b7fe0 60%,#c08ad8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero.v3 .h3-lede{max-width:52ch}
+.hero.v3 .school{box-shadow:0 10px 24px -18px rgba(40,50,120,.45);border-color:rgba(108,116,214,.22)}
+.hero.v3 .h3-cta .btn:not(.dark){border-color:rgba(20,36,74,.5);background:rgba(255,255,255,.7)}
+.hero.v3 .h3-cta .btn.dark{box-shadow:0 14px 28px -14px rgba(20,36,74,.6)}
+.hero.v3 .lan-zone{min-height:clamp(420px,64vh,700px)}
+.ring{position:absolute;left:50%;top:52%;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0}
+.ring.r1{width:clamp(300px,24vw,460px);aspect-ratio:1;border:1px solid rgba(108,116,214,.22)}
+.ring.r2{width:clamp(420px,34vw,640px);aspect-ratio:1;border:1px dashed rgba(108,116,214,.18);animation:ringTurn 60s linear infinite}
+.ring.r3{width:clamp(180px,14vw,270px);aspect-ratio:1;background:radial-gradient(circle,rgba(255,255,255,.9),rgba(255,255,255,0) 70%)}
+@keyframes ringTurn{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.bf{box-shadow:0 60px 90px -40px rgba(40,46,120,.55),0 22px 34px -18px rgba(20,36,74,.32),0 2px 4px rgba(20,36,74,.08),inset 0 0 0 1px rgba(20,36,74,.07)!important}
+.hero.v3 .h3-name{font-size:clamp(64px,13.6vw,270px);bottom:-.04em;background:linear-gradient(180deg,rgba(214,214,250,.95) 0%,rgba(236,234,252,.7) 70%,rgba(248,247,252,0) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:1.5px rgba(108,116,214,.45)}
+@media (prefers-reduced-motion: reduce){.ring.r2{animation:none}}
+@media (max-width:900px){.hero.v3 .h3-grid{grid-template-columns:minmax(0,1fr);padding-bottom:120px}.h3-title .l1,.h3-title .l2{white-space:normal}.ring.r2{display:none}}
+
 /* story + recognition: one full-screen section, two calm halves */
 .sr{box-sizing:border-box;width:100%;min-height:100vh;min-height:100svh;display:grid;grid-template-rows:auto auto;border-block:1px solid var(--line);scroll-margin-top:0}
 .sr-half{position:relative;overflow:hidden;display:flex;align-items:center;padding:clamp(84px,10.5vh,116px) max(24px,6vw) clamp(26px,4vh,48px)}
@@ -678,6 +710,7 @@ footer a{text-decoration:none}
 </nav>
 
 <header class="hero v3" id="top">
+  <div class="h3-bg" aria-hidden="true"><span class="g1"></span><span class="g2"></span><span class="g3"></span></div>
   <canvas class="lan-strap" id="lanStrap" aria-hidden="true"></canvas>
   <div class="wrap topbar">
     <a class="h3-logo" href="#top"><span>PS</span>Pranjal Singh</a>
@@ -692,12 +725,12 @@ footer a{text-decoration:none}
   <div class="wrap h3-grid">
     <div class="h3-copy">
       <span class="eyebrow-h">Brand &amp; Growth Marketer</span>
-      <p class="h3-title">Meet the marketer<br><span>behind the numbers.</span></p>
+      <p class="h3-title"><span class="l1">Meet the marketer</span><span class="l2">behind the numbers.</span></p>
       <p class="h3-lede">23M+ views as a creator, a startup with paying users, and internships with teams like Garena and ITC.</p>
       <p class="school"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5 2.5 9 12 13.5 21.5 9Z" fill="#14244a"/><path d="M6.5 11v4.2c0 1.5 2.5 2.8 5.5 2.8s5.5-1.3 5.5-2.8V11L12 13.5Z" fill="#14244a" opacity=".85"/><path d="M21.5 9v5.2" stroke="#f2b51c" stroke-width="1.6" stroke-linecap="round"/><circle cx="21.5" cy="15.2" r="1.4" fill="#f2b51c"/></svg><span>Economics (Hons), SRCC</span><i>·</i><span>Delhi University</span><i>·</i><span>Graduating 2027</span></p>
       <div class="h3-cta"><a class="btn dark" href="#internships">See my work</a><a class="btn" href="#contact">Get in touch</a></div>
     </div>
-    <div class="lan-zone" id="lanZone">
+    <div class="lan-zone" id="lanZone"><span class="ring r1" aria-hidden="true"></span><span class="ring r2" aria-hidden="true"></span><span class="ring r3" aria-hidden="true"></span>
       <div class="idb" id="badge" role="button" tabindex="0" aria-label="ID badge. Drag it, or press Enter to flip.">
         <span class="idb-clip" aria-hidden="true"></span>
         <div class="idb-in" id="badgeIn">
@@ -1299,20 +1332,20 @@ function art(key, label){
     const z = zone.getBoundingClientRect(); bw = badge.offsetWidth; bh = badge.offsetHeight;
     zx = z.left - r.left; zy = z.top - r.top;
     ax = zx + z.width / 2; ay = zy + 4;
-    const hangY = ay + Math.max(z.height * .36 - bh * .35, 70);
+    const hangY = Math.max(zy + z.height * .5 - bh * .5, ay + 90);
     seg = (hangY - ay) / N; cardLen = bh * .62;
   }
   function reset(drop){
     P = [];
-    for (let i = 0; i <= N; i++){ const y = ay + seg * i * (drop ? .45 : 1), x = ax + (drop ? i * (W < 700 ? 2.5 : 7) : 0); P.push({ x, y, px: x - (drop ? 6 : 0), py: y }); }
-    const l = P[N]; P.push({ x: l.x + (drop ? (W < 700 ? 10 : 30) : 0), y: l.y + cardLen, px: l.x, py: l.y + cardLen });
+    for (let i = 0; i <= N; i++){ const y = ay + seg * i * (drop ? .62 : 1) - (drop ? 60 : 0) * (i / N), x = ax + (drop ? i * 1.2 : 0); P.push({ x, y, px: x - (drop ? 2 : 0), py: y }); }
+    const l = P[N]; P.push({ x: l.x + (drop ? 6 : 0), y: l.y + cardLen, px: l.x, py: l.y + cardLen });
   }
   function step(){
     t += 1 / 60; idle += 1 / 60;
     const wind = Math.sin(t * .9) * .025 + Math.sin(t * 2.3) * .012;
     for (let i = 1; i < P.length; i++){
       const p = P[i]; if (drag && i === N) continue;
-      const vx = (p.x - p.px) * .985, vy = (p.y - p.py) * .985;
+      const vx = (p.x - p.px) * .978, vy = (p.y - p.py) * .978;
       p.px = p.x; p.py = p.y; p.x += vx + wind * (i / N); p.y += vy + (i === P.length - 1 ? .9 : .55);
     }
     P[0].x = ax; P[0].y = ay;
