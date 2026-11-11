@@ -483,6 +483,20 @@ button{font:inherit;color:inherit}
 .brands-band{background:rgba(255,255,255,.5)!important}
 .marquee{background:transparent!important}
 
+/* company logo cards (in place of the characters) */
+.art-logo{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.al-card{position:relative;width:min(86%,340px);aspect-ratio:1;display:grid;place-items:center;border-radius:32px;
+  background:linear-gradient(160deg,rgba(255,255,255,.95),rgba(255,255,255,.72));border:1px solid rgba(255,255,255,.95);
+  box-shadow:0 40px 70px -40px rgba(60,60,150,.55),0 14px 26px -18px rgba(20,36,74,.3),inset 0 0 0 1px rgba(108,116,214,.12);
+  animation:alFloat 6s ease-in-out infinite;backdrop-filter:blur(8px)}
+.al-card::before{content:"";position:absolute;inset:-14px;border-radius:40px;border:1px dashed rgba(108,116,214,.25);pointer-events:none}
+.art .al-card img{position:absolute;inset:0;margin:auto;width:100%;height:100%;object-fit:contain;object-position:center;z-index:1}
+.al-card img + b{visibility:hidden}
+.al-card b{font-size:clamp(22px,2.2vw,34px);font-weight:800;letter-spacing:-.02em;color:var(--ink);text-align:center;padding:0 12px;line-height:1.1}
+.art.small .al-card{width:min(80%,220px);border-radius:26px}
+@keyframes alFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media (prefers-reduced-motion: reduce){.al-card{animation:none}}
+
 /* story + recognition: one full-screen section, two calm halves */
 .sr{box-sizing:border-box;width:100%;min-height:100vh;min-height:100svh;display:grid;grid-template-rows:auto auto;border-block:1px solid var(--line);scroll-margin-top:0}
 .sr-half{position:relative;overflow:hidden;display:flex;align-items:center;padding:clamp(84px,10.5vh,116px) max(24px,6vw) clamp(26px,4vh,48px)}
@@ -1358,7 +1372,23 @@ const ICON = {
   chev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>'
 };
 const esc = s => String(s).replace(/"/g, '&quot;');
+// Company / platform logos shown in place of the characters.
+// Upload the logo file to the repo root with exactly this name. Until it exists, the name shows in the card.
+const LOGO_ART = {
+  cheetah:  { file: "logo-garena.png",     name: "Garena" },
+  elephant: { file: "logo-itc.png",        name: "ITC" },
+  parrot:   { file: "logo-htmedia.png",    name: "HT Media" },
+  eagle:    { file: "logo-wena.png",       name: "WENA" },
+  owl:      { file: "logo-scaler.png",     name: "Scaler" },
+  peacock:  { file: "logo-youtube.png",    name: "YouTube" },
+  squirrel: { file: "logo-instagram.png",  name: "Instagram" },
+  fox:      { file: "logo-internfoxx.png", name: "InternFoxx" },
+  lion:     { file: "logo-conclave.png",   name: "Business Conclave" },
+  bee:      { file: "logo-nss.png",        name: "NSS SRCC" }
+};
 function art(key, label){
+  const L = LOGO_ART[key];
+  if (L) return `<div class="art-logo"><div class="al-card"><img src="${esc(L.file)}" alt="${esc(L.name)} logo" loading="lazy" onerror="this.remove()"><b>${esc(L.name)}</b></div></div>`;
   return IMAGES[key] ? `<img class="photo" src="${esc(IMAGES[key])}" alt="${esc(label)}">` : critter(key, label);
 }
 
