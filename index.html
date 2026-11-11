@@ -888,6 +888,35 @@ footer a{text-decoration:none}
   .hero.v3 .h3-lede{font-size:12.2px!important}
   .hero.v3 .school{font-size:10.4px!important;padding:7px 10px!important}
 }
+
+/* phone: badge back fits fully (Let's talk visible) */
+@media (max-width:720px){
+  .back{padding:20px 14px 14px!important}
+  .back .bf-top{margin-bottom:6px}
+  .bk-stats{gap:9px!important;margin-top:2px!important}
+  .bk-stats b{font-size:25px!important}
+  .bk-stats b .odo{font-size:inherit!important}
+  .bk-stats li > span{font-size:10.5px!important;line-height:1.3}
+  .bk-live{font-size:9.5px!important;margin-top:4px!important}
+  .bk-cta{margin-top:8px!important;padding:8px 10px!important;font-size:11.5px!important}
+}
+
+@media (max-width:380px){.bk-stats b{font-size:21px!important}.bk-live{display:none!important}.bk-stats{gap:6px!important}}
+
+/* laptop mockup: shown instead of the phone on small screens */
+.laptop-wrap{display:none;margin:0}
+@media (max-width:720px){
+  .media.has-phones .phones:has(+ .laptop-wrap){display:none!important}
+  .laptop-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%}
+  .laptop{all:unset;box-sizing:border-box;display:block;width:100%;max-width:420px;cursor:zoom-in}
+  .lt-screen{display:block;position:relative;margin:0 6%;padding:3.2% 3.2% 4%;border-radius:14px 14px 4px 4px;
+    background:linear-gradient(160deg,#2c303b,#0d0f14 55%,#1d2029);box-shadow:inset 0 0 0 1.5px #3c414e,0 22px 40px -24px rgba(40,46,120,.55)}
+  .lt-screen::before{content:"";position:absolute;left:50%;top:1.3%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#2a2e38;box-shadow:inset 0 0 0 1.5px #444a58}
+  .lt-screen img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:3px;background:#000}
+  .lt-base{display:block;position:relative;height:14px;margin-top:-1px;border-radius:0 0 14px 14px;
+    background:linear-gradient(180deg,#d8dce4,#a9aebb 60%,#8c92a0);box-shadow:0 14px 22px -12px rgba(20,36,74,.45)}
+  .lt-base::before{content:"";position:absolute;left:50%;top:0;width:18%;height:5px;margin-left:-9%;border-radius:0 0 6px 6px;background:#9aa0ad}
+}
 </style>
 
 
@@ -1123,7 +1152,7 @@ const SETS = {
         "Host of the “Aspire Beads” podcast: <strong>100K+ views</strong> and 1.7M+ impressions."
       ],
       phones: [
-        { img: "proof-yt.webp", label: "@PranjalGunsatiya · 8.53K subs", url: "https://www.youtube.com/@PranjalGunsatiya", alt: "YouTube channel: Pranjal Gunsatiya, 8.53K subscribers" }
+        { img: "proof-yt.webp", laptop: "proof-yt-laptop.webp", label: "@PranjalGunsatiya · 8.53K subs", url: "https://www.youtube.com/@PranjalGunsatiya", alt: "YouTube channel: Pranjal Gunsatiya, 8.53K subscribers" }
       ] },
     { tab: "Instagram", animal: "squirrel", name: "Instagram", role: "Creator · Reels", meta: "",
       points: [
@@ -1677,7 +1706,10 @@ document.querySelectorAll('[data-car]').forEach(root => {
         <button type="button" class="phone" data-zoom="${esc(p.img)}" aria-label="Zoom: ${esc(p.alt || p.label)}"><img src="${esc(p.img)}" alt="${esc(p.alt || p.label)}" loading="lazy" decoding="async"></button>
         ${p.strip ? `<button type="button" class="strip" data-zoom="${esc(p.strip)}" aria-label="Zoom: ${esc(p.stripAlt || '')}"><img src="${esc(p.strip)}" alt="${esc(p.stripAlt || '')}" loading="lazy" decoding="async"></button>` : ''}
         <figcaption class="plabel"><span>${esc(p.label)}</span>${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">Open ↗</a>` : ''}</figcaption>
-      </figure>`).join('')}</div>`;
+      </figure>`).join('')}</div>${it.phones.filter(p => p.laptop).map(p => `<figure class="laptop-wrap">
+        <button type="button" class="laptop" data-zoom="${esc(p.laptop)}" aria-label="Zoom: ${esc(p.alt || p.label)}"><span class="lt-screen"><img src="${esc(p.laptop)}" alt="${esc(p.alt || p.label)}" loading="lazy" decoding="async"></span><span class="lt-base" aria-hidden="true"></span></button>
+        <figcaption class="plabel"><span>${esc(p.label)}</span>${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">Open ↗</a>` : ''}</figcaption>
+      </figure>`).join('')}`;
     } else if (media){
       media.classList.remove('has-phones','has-proofs');
       media.classList.toggle('fan', !!it.fan);
