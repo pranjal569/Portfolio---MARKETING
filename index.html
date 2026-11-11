@@ -310,6 +310,7 @@ button{font:inherit;color:inherit}
 .media.fan .tile:nth-child(2){right:3%;top:10%;transform:rotate(4deg);z-index:2}
 .media.fan .tile:hover,.media.fan .tile:focus-visible{z-index:3;transform:rotate(0) scale(1.04);box-shadow:0 34px 60px -26px rgba(20,36,74,.7)}
 .media.fan .tile .cap{left:12px;right:12px;bottom:10px}
+.media.fan .fan-link{position:absolute;left:0;right:0;bottom:0;margin:0;z-index:4}
 .tile.feature{grid-column:1 / -1;justify-self:center;width:min(100%,calc(64vh * .8));aspect-ratio:4/5;border-radius:18px;box-shadow:0 30px 50px -28px rgba(20,36,74,.6)}
 .tile.feature .cap{left:16px;right:16px;bottom:14px}
 @media (max-width:980px){.media.fan{grid-column:1 / -1;width:min(100%,460px)}.media .tile.feature{grid-column:1 / -1;width:min(100%,420px)}}
@@ -1174,6 +1175,7 @@ const SETS = {
         "Users have landed internships at FICCI, Grant Thornton, Tata 1mg, DLF and IndiGo."
       ],
       fan: true,
+      fanLink: { label: "internfoxx.in · Live platform", url: "https://internfoxx.in" },
       media: [
         { img: "ifx-poster.webp", photo: true, title: "“Dear Crush…”", cap: "On the street" },
         { img: "ifx-poster2.webp", photo: true, title: "“This too shall pass”", cap: "Fresh from the print shop" }
@@ -1718,7 +1720,7 @@ document.querySelectorAll('[data-car]').forEach(root => {
         if (m.photo) return `<div class="tile photo has-img${m.wide ? ' wide' : ''}${m.feature ? ' feature' : ''}" role="button" tabindex="0" data-zoom="${esc(m.img)}" aria-label="Zoom: ${esc(m.cap)}"><img src="${esc(m.img)}" alt="${esc(m.cap)}" loading="lazy"><span class="cap"><b>${m.title}</b>${m.cap}</span></div>`;
         const tagName = m.url ? 'a' : 'div';
         return `<${tagName} class="tile${m.wide ? ' wide' : ''}${m.img ? ' has-img' : ''}" ${m.url ? `href="${esc(m.url)}" target="_blank" rel="noopener"` : ''}>${m.img ? `<img src="${esc(m.img)}" alt="">` : ''}<span class="play">${ICON.play}</span><span class="cap"><b>${m.title}</b>${m.cap}</span></${tagName}>`;
-      }).join('');
+      }).join('') + (it.fan && it.fanLink ? `<p class="plabel fan-link"><span>${esc(it.fanLink.label)}</span><a href="${esc(it.fanLink.url)}" target="_blank" rel="noopener">Open ↗</a></p>` : '');
     }
     if (animate){ panel.classList.remove('swap'); void panel.offsetWidth; panel.classList.add('swap'); }
   }
