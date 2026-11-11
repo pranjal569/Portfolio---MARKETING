@@ -912,7 +912,8 @@ footer a{text-decoration:none}
   .lt-screen{display:block;position:relative;margin:0 6%;padding:3.2% 3.2% 4%;border-radius:14px 14px 4px 4px;
     background:linear-gradient(160deg,#2c303b,#0d0f14 55%,#1d2029);box-shadow:inset 0 0 0 1.5px #3c414e,0 22px 40px -24px rgba(40,46,120,.55)}
   .lt-screen::before{content:"";position:absolute;left:50%;top:1.3%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#2a2e38;box-shadow:inset 0 0 0 1.5px #444a58}
-  .lt-screen img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:3px;background:#000}
+  .lt-view{display:block;position:relative;width:100%;height:0;padding-bottom:62.5%;overflow:hidden;border-radius:3px;background:#0f0f0f}
+  .lt-view img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:top;border:0}
   .lt-base{display:block;position:relative;height:14px;margin-top:-1px;border-radius:0 0 14px 14px;
     background:linear-gradient(180deg,#d8dce4,#a9aebb 60%,#8c92a0);box-shadow:0 14px 22px -12px rgba(20,36,74,.45)}
   .lt-base::before{content:"";position:absolute;left:50%;top:0;width:18%;height:5px;margin-left:-9%;border-radius:0 0 6px 6px;background:#9aa0ad}
@@ -1707,7 +1708,7 @@ document.querySelectorAll('[data-car]').forEach(root => {
         ${p.strip ? `<button type="button" class="strip" data-zoom="${esc(p.strip)}" aria-label="Zoom: ${esc(p.stripAlt || '')}"><img src="${esc(p.strip)}" alt="${esc(p.stripAlt || '')}" loading="lazy" decoding="async"></button>` : ''}
         <figcaption class="plabel"><span>${esc(p.label)}</span>${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">Open ↗</a>` : ''}</figcaption>
       </figure>`).join('')}</div>${it.phones.filter(p => p.laptop).map(p => `<figure class="laptop-wrap">
-        <button type="button" class="laptop" data-zoom="${esc(p.laptop)}" aria-label="Zoom: ${esc(p.alt || p.label)}"><span class="lt-screen"><img src="${esc(p.laptop)}" alt="${esc(p.alt || p.label)}" loading="lazy" decoding="async"></span><span class="lt-base" aria-hidden="true"></span></button>
+        <button type="button" class="laptop" data-zoom="${esc(p.laptop)}" aria-label="Zoom: ${esc(p.alt || p.label)}"><span class="lt-screen"><span class="lt-view"><img src="${esc(p.laptop)}" alt="${esc(p.alt || p.label)}" decoding="async" width="1200" height="750"></span></span><span class="lt-base" aria-hidden="true"></span></button>
         <figcaption class="plabel"><span>${esc(p.label)}</span>${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">Open ↗</a>` : ''}</figcaption>
       </figure>`).join('')}`;
     } else if (media){
