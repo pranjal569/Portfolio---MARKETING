@@ -626,7 +626,7 @@ body::before{content:"";position:fixed;inset:-20vmax;z-index:-1;pointer-events:n
 .bitem:hover{transform:translateX(4px);box-shadow:var(--shadow)}
 .bitem:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .bitem[aria-selected="true"]{border-color:var(--ink);box-shadow:0 0 0 1.5px var(--ink),var(--shadow)}
-.bitem .bthumb{height:auto;min-height:100%;padding:8px}
+.bitem .bthumb{height:auto;min-height:0;align-self:stretch;padding:8px}
 .bitem .bthumb b{font-size:clamp(14px,1.15vw,20px)}
 .bitem .bbody{padding:clamp(12px,1.6vh,18px) clamp(12px,1.2vw,20px);gap:6px}
 .bname{font-size:clamp(12.5px,.95vw,16px);font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1.3}
@@ -685,7 +685,7 @@ body::before{content:"";position:fixed;inset:-20vmax;z-index:-1;pointer-events:n
   #brand.box,#leadership.box{min-height:0;padding-block:56px 40px}
   .brand-list{grid-template-columns:minmax(0,1fr)}
   .bitem{grid-template-columns:84px minmax(0,1fr);grid-template-rows:none}
-  .bitem .bthumb{min-height:100%}
+  .bitem .bthumb{min-height:0;align-self:stretch}
   #leadership .lead-grid{grid-template-columns:minmax(0,1fr)}
   #leadership .lead-grid .art{height:220px}
   #leadership .lead-grid .art.small{height:160px}
@@ -846,6 +846,48 @@ footer a{text-decoration:none}
   .hero.v3 .lan-zone{margin-top:20px!important}
   #internships h2,#built h2,#brand h2,#leadership h2,.box h2{font-size:25px!important}
 }
+
+/* ===== phone: Brand Work as a swipeable row of compact cards ===== */
+@media (max-width:720px){
+  .brand-body{gap:14px!important}
+  .brand-list{display:flex!important;flex-direction:row!important;gap:10px!important;overflow-x:auto;scroll-snap-type:x mandatory;
+    margin:0 -20px;padding:4px 20px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .brand-list::-webkit-scrollbar{display:none}
+  .bitem{flex:0 0 74%;scroll-snap-align:start;display:grid!important;grid-template-columns:72px minmax(0,1fr)!important;grid-template-rows:auto!important;
+    align-items:stretch;height:auto!important;min-height:0!important;border-radius:14px!important}
+  .bitem:hover{transform:none!important}
+  .bitem .bthumb{height:auto!important;min-height:0!important;padding:6px!important;align-self:stretch}
+  .bitem .bthumb b{font-size:10.5px!important;line-height:1.1;letter-spacing:-.01em}
+  .bitem .bbody{display:flex!important;flex-direction:column;gap:4px!important;padding:10px 12px!important;min-width:0}
+  .bname{font-size:11.5px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bitem .tag{align-self:flex-start;font-size:10px!important;padding:3px 8px!important}
+  .bdesc{font-size:12px!important;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .bitem .more{display:none!important}
+  .bitem[aria-selected="true"]{box-shadow:0 10px 24px -16px rgba(90,80,200,.55)!important}
+  .deck-bar{gap:8px!important}
+  .deck-btn{width:36px!important;height:36px!important}
+}
+
+/* phone hero: lede in 2 lines, school chip in 1 line */
+@media (max-width:720px){
+  .hero.v3 .h3-lede{font-size:13.2px!important;line-height:1.5;max-width:none}
+  .hero.v3 .school{display:inline-flex;flex-wrap:nowrap!important;white-space:nowrap;font-size:11.5px!important;padding:8px 12px!important;gap:6px!important;justify-self:start;width:auto;max-width:100%}
+  .hero.v3 .school span:nth-of-type(2),.hero.v3 .school i:first-of-type{display:none}
+  .hero.v3 .school svg{width:15px;height:15px;flex:none}
+}
+
+/* phone: no top bar in hero, content starts higher */
+@media (max-width:720px){
+  .hero.v3 > .topbar{display:none!important}
+  .hero.v3 .h3-grid{padding-top:36px!important}
+}
+
+@media (max-width:720px){.hero.v3 .h3-copy{grid-template-columns:minmax(0,1fr)!important;min-width:0}}
+@media (max-width:380px){
+  .hero.v3 .h3-title{font-size:25px!important}
+  .hero.v3 .h3-lede{font-size:12.2px!important}
+  .hero.v3 .school{font-size:10.4px!important;padding:7px 10px!important}
+}
 </style>
 
 
@@ -875,7 +917,7 @@ footer a{text-decoration:none}
   <div class="wrap h3-grid">
     <div class="h3-copy">
       <p class="h3-title"><span class="l1">Meet the marketer</span><span class="l2">behind the numbers</span></p>
-      <p class="h3-lede">23M+ views as a creator, a startup with paying users, and internships with teams like Garena and ITC.</p>
+      <p class="h3-lede">25M+ views as a creator, a startup with paying users, and internships at Garena and ITC.</p>
       <p class="school"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5 2.5 9 12 13.5 21.5 9Z" fill="#14244a"/><path d="M6.5 11v4.2c0 1.5 2.5 2.8 5.5 2.8s5.5-1.3 5.5-2.8V11L12 13.5Z" fill="#14244a" opacity=".85"/><path d="M21.5 9v5.2" stroke="#f2b51c" stroke-width="1.6" stroke-linecap="round"/><circle cx="21.5" cy="15.2" r="1.4" fill="#f2b51c"/></svg><span>Economics (Hons), SRCC</span><i>·</i><span>Delhi University</span><i>·</i><span>Graduating 2027</span></p>
       <div class="h3-cta"><a class="btn dark" href="#internships">See my work</a><a class="btn" href="#contact">Get in touch</a></div>
     </div>
@@ -893,7 +935,7 @@ footer a{text-decoration:none}
           <div class="bf back">
             <div class="bf-top"><span class="bf-logo">PS</span><span class="bf-pass">Access level · All</span></div>
             <ul class="bk-stats">
-              <li><b><span class="odo" data-to="23" data-suf="M+">0</span></b><span>views across YouTube &amp; Instagram</span></li>
+              <li><b><span class="odo" data-to="25" data-suf="M+">0</span></b><span>views across YouTube &amp; Instagram</span></li>
               <li><b><span class="odo" data-to="16" data-suf="K+">0</span></b><span>followers on YouTube &amp; Instagram</span></li>
               <li><b><span class="odo" data-to="400" data-suf="+">0</span></b><span>users on internfoxx.in</span></li>
             </ul>
@@ -1010,7 +1052,7 @@ footer a{text-decoration:none}
    CONTENT + IMAGES — edit everything here
    ========================================================= */
 const LINKS = {
-  email: "iampranjal569@gmail.com",
+  email: "pranjalgunsatiya@gmail.com",
   linkedin: "https://www.linkedin.com/in/pranjal569",
   resume: "",     // paste your resume link (Drive/PDF)
   instagram: "https://www.instagram.com/pranjall_verse/",
